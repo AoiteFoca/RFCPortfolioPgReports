@@ -1,7 +1,7 @@
 # Capa
 
-- **Título do Projeto**: [Título claro e conciso que reflete a essência do produto ou ferramenta].
-- **Nome do Estudante**: [Nome completo do estudante].
+- **Título do Projeto**: PGReports.
+- **Nome do Estudante**: Nathan Cielusinski.
 - **Curso**: Engenharia de Software.
 - **Data de Entrega**: [Data].
 
@@ -11,9 +11,9 @@ Breve descrição do conteúdo do documento, incluindo o propósito do projeto e
 
 ## 1. Introdução
 
-- **Contexto**: Breve descrição do contexto que envolve o projeto.
-- **Justificativa**: Explicação da relevância do projeto para o campo da engenharia de software.
-- **Objetivos**: Descrição do objetivo principal do projeto e de quaisquer objetivos secundários.
+- **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de BASIS, suporte de infraestrutura e para auxiliar os colaboradores responsáveis por _databases_ que estejam ligadas à aplicações.
+- **Justificativa**: Com a alta demanda de instâncias e bancos de dados PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _environments_.
+- **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por bancos de dados à identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
 
 ## 2. Descrição do Projeto
 
