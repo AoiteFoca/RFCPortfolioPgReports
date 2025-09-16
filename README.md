@@ -17,15 +17,16 @@ Breve descrição do conteúdo do documento, incluindo o propósito do projeto e
 
 ## 2. Descrição do Projeto
 
-* **Linha de Projeto**: Indique a categoria do projeto (Web Apps, Aplicações Mobile, Jogos Digitais, Projetos com IA ou Projetos IoT), conforme definido no regulamento.
-* **Tema do Projeto**: Descreva de forma clara e objetiva o produto, serviço ou ferramenta a ser desenvolvido.
-* **Propósito e Uso Prático**: Explique qual problema real será resolvido e como a solução será utilizada na prática.
-* **Público-Alvo**: Defina o perfil dos usuários ou clientes potenciais que se beneficiarão da solução.
-* **Problemas a Resolver**: Liste de forma objetiva os principais problemas ou necessidades que o projeto pretende atender.
-* **Diferenciação/Ineditismo**: Destaque o que torna a proposta única em relação a soluções existentes, mesmo quando o tema é semelhante a outros projetos.
-* **Limitações**: Especifique o que o projeto **não** abrangerá, evitando expectativas incorretas.
-* **Normas e Legislações Aplicáveis**: Liste normas, leis e diretrizes relevantes ao contexto do projeto (ex.: LGPD, HIPAA, WCAG, ESRB/PEGI), indicando como serão observadas.
-* **Métricas de Sucesso**: Apresente critérios iniciais para medir o desempenho e a efetividade do projeto (ex.: tempo de resposta, número de usuários atendidos, taxa de acerto do modelo de IA).
+* **Linha de Projeto**: O PGReports é uma aplicação web disponibilizada na rede interna da empresa WEG.
+* **Tema do Projeto**: Uma aplicação que economiza tempo e facilita a visualização de dados e informações de nível mais profundo de um log PostgreSQL.
+* **Propósito e Uso Prático**: Quando ferramentas básicas de visualização e análise de dados, como Grafana, se tornam superficiais para a resolução de um problema, analistas devem atuar para identificar o gargalo ou a falha que resultou no problema encontrado. O PGReports surge, nesses casos, como uma ótima opção de análise, uma vez que trabalha diretamente com o _raw log_ (log puro e sem tratamento algum).
+* **Público-Alvo**: O público alvo dessa ferramente são DBAs, analistas BASIS e os próprios responsáveis por bancos de dados dentro dos ambientes gerenciados pela T.I da WEG.
+* **Problemas a Resolver**: Desperdício de tempo para encontrar queries que estão sendo mais executadas, mais demoradas e mais custosas, no geral, para o servidos. Identificação da aplicação e client responsável pela execução dessas queries. De maneira abrangente, o PGReports facilita na resolução destes problemas agrupando essas informações de forma amigável ao usuário final.
+* **Diferenciação/Ineditismo**: Trabalhar com o "log cru" de forma detalhada, profunda e direta para apresentar os dados em uma exibição prática e intuitiva.
+* **Limitações**: Como o PGReports surgiu para suprir uma necessidade existente da empresa, seu foco está voltado para a instância geral, o que não abrange a avaliação individual dos bancos de dados presentes nela. Vale ressaltar que a aplicação pode gerar insights positivos quanto à melhorias de aplicações e databases individuais, mas os reports não são voltados às _databases_ individuais, e sim à instância em que estes se localizam.
+* **Normas e Legislações Aplicáveis**: Liste normas, leis e diretrizes relevantes ao contexto do projeto (ex.: LGPD, HIPAA, WCAG, ESRB/PEGI), indicando como serão observadas. <-- FAZER ESSE AQUI -->
+>Fazer Normas e Legislação - Ainda pendente.
+* **Métricas de Sucesso**: Pontos que apresentam o sucesso da implementação dessa aplicação na empresa podem ser, principalmente, a redução de tempo nas avaliações de problemas, identificação de gargalos que ainda não causaram problemas, identificação para melhorias em queries e diretamente nas aplicações. 
 
 ## 3. Especificação Técnica
 
