@@ -1,22 +1,18 @@
 # Capa
-
 - **Título do Projeto**: PGReports.
 - **Nome do Estudante**: Nathan Cielusinski.
 - **Curso**: Engenharia de Software.
 - **Data de Entrega**: [Data].
 
 # Resumo
-
 Breve descrição do conteúdo do documento, incluindo o propósito do projeto e os principais pontos de discussão.
 
-## 1. Introdução
-
+## 1. Introdução (FEITO)
 - **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de BASIS, suporte de infraestrutura e para auxiliar os colaboradores responsáveis por _databases_ que estejam ligadas à aplicações.
 - **Justificativa**: Com a alta demanda de instâncias e bancos de dados PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _environments_.
 - **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por bancos de dados à identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
 
 ## 2. Descrição do Projeto
-
 * **Linha de Projeto**: O PGReports é uma aplicação web disponibilizada na rede interna da empresa WEG.
 * **Tema do Projeto**: Uma aplicação que economiza tempo e facilita a visualização de dados e informações de nível mais profundo de um log PostgreSQL.
 * **Propósito e Uso Prático**: Quando ferramentas básicas de visualização e análise de dados, como Grafana, se tornam superficiais para a resolução de um problema, analistas devem atuar para identificar o gargalo ou a falha que resultou no problema encontrado. O PGReports surge, nesses casos, como uma ótima opção de análise, uma vez que trabalha diretamente com o _raw log_ (log puro e sem tratamento algum).
@@ -29,7 +25,6 @@ Breve descrição do conteúdo do documento, incluindo o propósito do projeto e
 * **Métricas de Sucesso**: Pontos que apresentam o sucesso da implementação dessa aplicação na empresa podem ser, principalmente, a redução de tempo nas avaliações de problemas, identificação de gargalos que ainda não causaram problemas, identificação para melhorias em queries e diretamente nas aplicações. 
 
 ## 3. Especificação Técnica
-
 Descrição detalhada da proposta, contemplando requisitos, arquitetura, tecnologias, segurança e aderência aos critérios obrigatórios da linha de projeto escolhida.
 
 ### 3.1. Requisitos de Software
@@ -69,21 +64,20 @@ Descrição detalhada da proposta, contemplando requisitos, arquitetura, tecnolo
     -   ...
    
 ## 4. Próximos Passos
-
  - Descrição dos passos seguintes após a conclusão do documento, com uma visão geral do cronograma para Portfólio I e II.
  - Definição de Marcos: Estabelecer datas para entregas intermediárias e checkpoints.
 
-
 ## 5. Referências
-
 Listagem de todas as fontes de pesquisa, frameworks, bibliotecas e ferramentas que serão utilizadas.
 
 ## 6. Apêndices (Opcionais)
-
 Informações complementares, dados de suporte ou discussões detalhadas fora do corpo principal.
-## 7. Avaliações de Professores
 
+## 7. Avaliações de Professores
 Adicionar três páginas no final do RFC para que os Professores escolhidos possam fazer suas considerações e assinatura:
+
 - Considerações Professor/a:
+
 - Considerações Professor/a:
+
 - Considerações Professor/a:
