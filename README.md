@@ -96,47 +96,191 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
   4. Nível 4 (Código): Implementações em Typescript, scripts Bash e Python.
 
 - **Mockups das Telas Principais**: As telas principais incluem:
-  - Dashboard inicial (Overview): visão geral das instâncias e métricas de desempenho.
-
   - Calendário de relatórios: seleção de data e navegação entre períodos.
-
+<COLOCAR IMAGEM CALENDARIO AQUI>
+  - Dashboard inicial (Overview): visão geral das instâncias e métricas de desempenho.
+<COLOCAR IMAGEM OVERVIEW AQUI>
   - Aba “Top Queries”: exibe consultas mais custosas.
+<COLOCAR IMAGEM TOP AQUI>
 
+- **Decisões e Alternativas Consideradas**:
+    - Inicialmente foi considerado o uso direto de ferramentas como Grafana e Splunk, mas ambas se mostraram superficiais para logs PostgreSQL detalhados.
+    - Optou-se por desenvolver o PGReports com pgBadger, garantindo personalização e independência.
 
-- **Decisões e Alternativas Consideradas**: Justifique escolhas de design, documentando alternativas avaliadas.
-
-- **Critérios de Escalabilidade, Resiliência e Segurança**: Descreva como a solução será projetada para suportar crescimento, lidar com falhas e manter segurança.
+- **Critérios de Escalabilidade, Resiliência e Segurança**:
+    - Escalabilidade: Processamento incremental permite adicionar novas instâncias sem afetar o desempenho.
+    - Resiliência: Logs corrompidos ou incompletos são ignorados automaticamente, mantendo a integridade dos relatórios.
+    - Segurança:
+        - Acesso restrito à rede corporativa (VPN interna).
+        - Autenticação via LDAP.
+        - Políticas de retenção e descarte automático após 90 dias.
 
 ### 3.3. Stack Tecnológica
-- **Linguagens de Programação**: Liste e justifique as escolhas.
-- **Frameworks e Bibliotecas**: Detalhe e justifique a seleção.
-- **Ferramentas de Desenvolvimento e Gestão**: Inclua IDEs, sistemas de versionamento, plataformas de integração contínua, monitoramento, entre outros.
-- **Licenciamento**: Indique as licenças dos softwares e bibliotecas utilizados ([MIT](https://opensource.org/licenses/MIT), [GPL](https://www.gnu.org/licenses/gpl-3.0.html), [Apache](https://www.apache.org/licenses/), [Creative Commons](https://creativecommons.org/licenses/)).
+- **Linguagens de Programação**:
+    - Typescript e Python: núcleo do backend e orquestração do pipeline (robusto ecossistema para parsing, automação e web).
+    - Bash/Shell: rotinas de agendamento (cron/systemd timer), integração com pgBadger e manutenção/rotação de relatórios.
+    - SQL (PostgreSQL): consultas administrativas e eventual persistência de metadados.
+    - HTML/CSS/JavaScript: reports/camada de visualização (dashboards responsivos, filtros e interação com gráficos).
+      
+- **Frameworks e Bibliotecas**:
+
+
+
+**FAZER**
+
+
+
+
+
+- **Ferramentas de Desenvolvimento e Gestão**:
+    - IDE/Editor: VS Code.
+    - Controle de versão: GitLab, merge requests e code review.
+    - CI/CD: GitLab CI.
+    - Observabilidade: logs de aplicação/servidor/instância, métricas do host e integração com Grafana.
+    - Gestão: Jira.
+    
+- **Licenciamento**:
+
+
+
+
+
+**FAZER**
+
+
+
+
+
+
+
 
 ### 3.4. Considerações de Segurança
-- **Riscos Identificados**: Liste ameaças potenciais (ex.: injeção de código, vazamento de dados, falhas de autenticação).
-- **Medidas de Mitigação**: Explique as ações planejadas para minimizar riscos (ex.: criptografia, controle de acesso, validação de entrada).
-- **Normas e Boas Práticas Seguidas**: Cite padrões como [OWASP Top 10](https://owasp.org/www-project-top-ten/), [ISO/IEC 27001](https://www.iso.org/isoiec-27001-information-security.html), [LGPD](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm) ou outros aplicáveis.
-- **Responsabilidade Ética**: Para projetos de IA ou manipulação de dados sensíveis, descreva como serão tratados vieses, privacidade e uso responsável ([UNESCO – Ética em IA](https://unesdoc.unesco.org/ark:/48223/pf0000380455), [OECD AI Principles](https://oecd.ai/en/ai-principles)).
+- **Riscos Identificados**: 
+    - Exposição de informações sensíveis em logs (strings de conexão, IPs internos, mensagens de erro detalhadas).
+    - Falhas de autenticação/autorização (acesso indevido a relatórios).
+    - Injeção (HTML Injection) via campos de filtro/consulta exibidos na UI.
+    - Command Injection em rotinas que manipulam caminhos/execuções de processos externos.
+    - DoS por carga excessiva (picos de logs ou consultas pesadas).
+    - Configuração insegura (TLS ausente, segredos em variáveis expostas, permissões amplas no host).
+    
+- **Medidas de Mitigação**:
+    - **Controle de acesso:** autenticação corporativa (LDAP/SSO) e autorização por perfil (RBAC: DBA, leitura, admin).
+    - **Segurança de transporte:** HTTPS/TLS término no reverse proxy (Nginx/Apache); HSTS e secure cookies.
+    - **Validação e sanitização de entrada:** whitelists de parâmetros, escaping rigoroso em templates Jinja2, Content-Security-Policy (CSP) para mitigar XSS.
+    - **Segregação de permissões:** usuário de sistema dedicado, least privilege, no-root containers (se Docker).
+    - **Proteção contra CSRF:** tokens anti-CSRF em POSTs sensíveis.
+    - **Proteção operacional:** rate limiting em endpoints críticos; timeouts e bulkheads para tarefas de parsing.
+    - **Gestão de segredos:** variáveis de ambiente/secret manager; nunca versionar credenciais.
+    - **Hardening & Logs:** cabeçalhos de segurança (X-Frame-Options, X-Content-Type-Options), auditoria de acessos, rotação/retenção (90 dias).
+    - **Backups e recuperação:** snapshots dos artefatos de relatório/índices, testes periódicos de restauração.
+
+- **Normas e Boas Práticas Seguidas**:
+    - OWASP Top: diretrizes para prevenção de vulnerabilidades web (XSS, auth, exposição de dados).
+    - ISO/IEC 27001: princípios de confidencialidade, integridade e disponibilidade (políticas, controle de acesso, trilhas de auditoria).
+    - LGPD (Lei nº 13.709/2018): princípio da minimização; tratamento apenas de dados técnicos necessários; anonimização/pseudonimização quando aplicável; logging sem PII; política de privacidade interna.
+    
+- **Responsabilidade Ética**:
+    - Privacidade por padrão: processar apenas o necessário para diagnóstico; mascarar ou suprimir PII acidental em logs.
+    - Transparência: registrar quais dados são coletados e por quê; disponibilizar política interna clara aos usuários.
+    - Uso responsável de dados e automações: auditoria de regras que destacam “gargalos” para evitar decisões enviesadas com supervisão humana sempre presente.
+    - Futuras extensões com IA: caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
 
 ### 3.5. Conformidade e Normas Aplicáveis
-- Relacione todas as legislações, regulamentações e normas técnicas aplicáveis ao projeto, descrevendo brevemente como serão atendidas.
-- Exemplos:
-  - [LGPD – Lei Geral de Proteção de Dados](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm)
-    - Coletar apenas dados necessários (nome, contato, dados do imóvel).
-    - Evitar dados sensíveis desnecessários.
-    - Solicitar consentimento explícito e exibir política de privacidade clara.
-    - Permitir acesso, correção e exclusão de dados pelo usuário.
-    -   ...
+O desenvolvimento e a operação do PGReports seguem rigorosamente as normas e legislações aplicáveis ao contexto de sistemas corporativos, com foco em segurança da informação, privacidade de dados e boas práticas de desenvolvimento de software.
+- LGPD – Lei Geral de Proteção de Dados (Lei nº 13.709/2018):
+    - O PGReports não coleta dados pessoais de usuários externos.
+    - Todos os dados processados são logs técnicos provenientes de servidores PostgreSQL corporativos, sem identificação de pessoas físicas.
+    - Caso haja necessidade futura de integração com dados sensíveis, o sistema seguirá os princípios da minimização, anonimização e finalidade legítima.
+    - O projeto mantém aderência à política interna de privacidade da WEG e à gestão de dados corporativos.
+      
+- ISO/IEC 27001 – Segurança da Informação:
+    - A arquitetura segue os pilares de confidencialidade, integridade e disponibilidade das informações.
+    - São aplicados controles de acesso restrito, auditoria de uso e segregação de funções.
+    - Logs e relatórios são armazenados em diretórios protegidos e com tempo de retenção definido (90 dias).
+    - Backups e procedimentos de recuperação de falhas seguem as diretrizes internas de segurança e continuidade de negócios.
+
+- OWASP - Segurança de Aplicações Web:
+    - O sistema é projetado com base nas boas práticas de segurança definidas pela OWASP Foundation, mitigando riscos como:
+        - Injeção de código (SQL/Command Injection).
+        - Quebra de autenticação e gerenciamento de sessão.
+        - Exposição de dados sensíveis.
+        - Falhas de configuração de segurança.
+    - Implementações incluem sanitização de entradas, escape em templates, controle de sessão seguro e criptografia de comunicações (HTTPS/TLS).
+
+- Política Interna de Segurança WEG:
+    - O PGReports opera exclusivamente dentro da rede corporativa da WEG.
+    - O acesso é controlado via autenticação corporativa (LDAP/AD).
+    - Todas as comunicações e permissões são auditáveis e alinhadas com as diretrizes de conformidade interna da empresa.
    
 ## 4. Próximos Passos
- - Descrição dos passos seguintes após a conclusão do documento, com uma visão geral do cronograma para Portfólio I e II.
- - Definição de Marcos: Estabelecer datas para entregas intermediárias e checkpoints.
+Após a conclusão deste documento, o projeto PgReports seguirá para as etapas de desenvolvimento, validação e aprimoramento contínuo, alinhadas às entregas previstas para Portfólio I e II.
+1. Validação Técnica (Novembro/2025)
+    - Testes internos de coleta e parsing incremental de logs.
+    - Ajustes de desempenho e consistência no processamento via pgBadger.
+    - Avaliação da interface inicial e revisão de usabilidade.
+
+2. Desenvolvimento de Funcionalidades-Chave (Dezembro/2025 a Janeiro/2026)
+    - Implementação dos módulos Overview, Top Queries, etc.
+    - Integração com autenticação corporativa (LDAP) e controle de acesso.
+    - Adição de exportação de relatórios em HTML.
+
+3. Aprimoramento da Interface e Experiência do Usuário (Fevereiro/2026)
+    - Aplicação de padrões visuais.
+    - Criação de dashboards interativos e filtros dinâmicos.
+    - Inclusão de indicadores de performance e métricas visuais.
+
+4. Testes de Escalabilidade e Segurança (Março/2026)
+    - Testes de carga em múltiplas instâncias PostgreSQL.
+    - Validação de autenticação e comunicação segura.
+    - Revisão de logs e políticas de retenção (lifetime de 3 meses).
+
+5. Implantação Interna e Coleta de Feedback (Abril/2026)
+    - Disponibilização do PGReports para equipes de Suporte, BASIS e DBAs da WEG.
+    - Coleta de feedback e métricas de uso real.
+    - Planejamento de melhorias e roadmap para nova versão.
+
+| **Marco** | **Descrição**                                      | **Data Estimada** |
+| --------- | -------------------------------------------------- | ----------------- |
+| M1        | Documento de Especificação Técnica finalizado      | 29/10/2025        |
+| M2        | Protótipo funcional do parser e dashboard básico   | 15/12/2025        |
+| M3        | Integração completa com PostgreSQL e autenticação  | 30/01/2026        |
+| M4        | Testes de desempenho e segurança                   | 15/03/2026        |
+| M5        | Implantação interna e validação com usuários reais | 10/04/2026        |
+| M6        | Entrega final Portfólio II                         | 30/04/2026        |
 
 ## 5. Referências
-Listagem de todas as fontes de pesquisa, frameworks, bibliotecas e ferramentas que serão utilizadas.
+POSTGRESQL GLOBAL DEVELOPMENT GROUP. PostgreSQL Documentation (v14–17).
+Disponível em: https://www.postgresql.org/docs/
 
-## 7. Avaliações de Professores
+
+AYYALUSAMY, B. pgBadger: PostgreSQL Log Analyzer and Report Generator.
+Disponível em: https://github.com/dalibo/pgbadger
+
+
+PYTHON SOFTWARE FOUNDATION. Python 3 Documentation.
+Disponível em: https://docs.python.org/3/
+
+
+GNU PROJECT. Bash Reference Manual.
+Disponível em: https://www.gnu.org/software/bash/manual/bash.html
+
+
+MICROSOFT. Visual Studio Code Documentation.
+Disponível em: https://code.visualstudio.com/docs
+
+
+OWASP FOUNDATION. OWASP Top 10 – Web Application Security Risks.
+Disponível em: https://owasp.org/www-project-top-ten/
+
+
+BRASIL. Lei nº 13.709, de 14 de agosto de 2018 – Lei Geral de Proteção de Dados Pessoais (LGPD).
+Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709.htm
+
+
+ISO. ISO/IEC 27001 – Information Security Management Systems.
+Disponível em: https://www.iso.org/isoiec-27001-information-security.html
+
+## 6. Avaliações de Professores
 Adicionar três páginas no final do RFC para que os Professores escolhidos possam fazer suas considerações e assinatura:
 
 - Considerações Professor/a:
