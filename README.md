@@ -16,7 +16,7 @@ O PGReports é uma aplicação web desenvolvida para auxiliar na análise de log
   
 - **Justificativa**: Com a alta demanda de instâncias e bancos de dados PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _environments_.
   
-- **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por bancos de dados à identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
+- **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por bancos de dados para identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
 
 ## 2. Descrição do Projeto
 * **Linha de Projeto**: O PGReports é uma aplicação web disponibilizada na rede interna da empresa WEG.
@@ -27,11 +27,11 @@ O PGReports é uma aplicação web desenvolvida para auxiliar na análise de log
 
 * **Público-Alvo**: O público alvo dessa ferramente são DBAs, analistas BASIS e os próprios responsáveis por bancos de dados dentro dos ambientes gerenciados pela T.I da WEG.
 
-* **Problemas a Resolver**: Desperdício de tempo para encontrar queries que estão sendo mais executadas, mais demoradas e mais custosas, no geral, para o servidos. Identificação da aplicação e client responsável pela execução dessas queries. De maneira abrangente, o PGReports facilita na resolução destes problemas agrupando essas informações de forma amigável ao usuário final.
+* **Problemas a Resolver**: Desperdício de tempo para encontrar queries que estão sendo mais executadas, mais demoradas e mais custosas, no geral, para o servidor, assim como a identificação da aplicação e client responsável pela execução dessas queries. De maneira abrangente, o PGReports facilita na resolução destes problemas agrupando essas informações de forma prática com uma interface amigável ao usuário final.
 
 * **Diferenciação/Ineditismo**: Trabalhar com o "log cru" de forma detalhada, profunda e direta para apresentar os dados em uma exibição prática e intuitiva.
 
-* **Limitações**: Como o PGReports surgiu para suprir uma necessidade existente da empresa, seu foco está voltado para a instância geral, o que não abrange a avaliação individual dos bancos de dados presentes nela. Vale ressaltar que a aplicação pode gerar insights positivos quanto à melhorias de aplicações e databases individuais, mas os reports não são voltados às _databases_ individuais, e sim à instância em que estes se localizam.
+* **Limitações**: Como o PGReports surgiu para suprir uma necessidade existente da empresa, seu foco está voltado para a instância geral, o que não abrange a avaliação individual dos bancos de dados presentes nela. Vale ressaltar que a aplicação pode gerar insights positivos quanto à melhorias de aplicações e databases individuais, mas os reports não são voltados às _databases_, e sim à instância em que estes se localizam.
 
 * **Normas e Legislações Aplicáveis**: O desenvolvimento e a operação do PGReports seguem diretrizes de conformidade técnica e de proteção de dados, assegurando que informações corporativas sejam tratadas com segurança e responsabilidade.
   - LGPD (Lei Geral de Proteção de Dados – Lei nº 13.709/2018):
@@ -42,21 +42,21 @@ O PGReports não coleta dados pessoais de usuários finais. Todos os logs proces
 
 * **Métricas de Sucesso**: O sucesso do PGReports será avaliado pela eficiência e impacto direto nas operações de análise de dados da WEG. Entre os principais indicadores estão:
   - Redução do tempo de diagnóstico de falhas em bancos PostgreSQL.
-  - Identificação proativa de gargalos e consultas ineficientes, prevenindo incidentes.
+  - Identificação de gargalos e consultas ineficientes, prevenindo incidentes.
   - Aumento da produtividade das equipes técnicas, com centralização das informações.
   - Melhoria na performance das aplicações e no uso dos recursos do servidor.
   - Adoção interna crescente e feedback positivo dos usuários.
 
 ## 3. Especificação Técnica
-Esta seção descreve os requisitos, arquitetura, design e considerações técnicas do PGReports, assegurando conformidade com boas práticas de desenvolvimento web e segurança corporativa.
+Considerando e assegurando a conformidade com boas práticas de desenvolvimento web e segurança corporativa, os requisitos, arquitetura, design e considerações técnicas do PGReports foram pensados da seguinte forma:
 
 ### 3.1. Requisitos de Software
 - **Requisitos Funcionais (RF)**:
   1. O sistema deve processar logs brutos (raw logs) do PostgreSQL e gerar relatórios incrementais.
-  2. O usuário deve poder acessar relatórios diários, semanais e mensais por meio de um calendário interativo.
-  3. O sistema deve permitir filtragem por banco de dados, usuário, query e tipo de evento (erro, checkpoint, vacuum, lock).
+  2. O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
+  3. O sistema deve exibir categorias separadas por tipos de evento (erro, checkpoint, vacuum, lock).
   4. O sistema deve exibir métricas de desempenho em dashboards visuais, incluindo tempo médio de execução, queries mais custosas e sessões ativas.
-  5. O usuário deve poder exportar relatórios em formato HTML e PDF.
+  5. O usuário deve poder baixar os gráficos dos relatórios em formato PNG.
   6. O sistema deve permitir o controle de acesso autenticado (login interno via LDAP corporativo).
   7. O administrador deve poder configurar o ciclo de retenção dos relatórios (lifetime de 3 meses).
 
@@ -66,8 +66,7 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
   3. Segurança: Acesso restrito à rede corporativa da WEG e autenticação via LDAP.
   4. Escalabilidade: Suporte à análise simultânea de múltiplas instâncias PostgreSQL.
   5. Disponibilidade: Operação contínua com logs processados em background via agendamentos (cron jobs).
-  6. Manutenibilidade: Código modular em Python, organizado por camadas e integrado a sistemas de versionamento (Git).
-  7. Compatibilidade: Integração com PostgreSQL 14+ e versões futuras.
+  6. Compatibilidade: Integração com PostgreSQL 14+.
 
 - **Aderência aos Requisitos da Linha de Projeto**: O PGReports é uma aplicação Web que atende aos critérios obrigatórios desta linha de projeto:
   - Indexes do report desenvolvidos em HTML5, CSS3 e JavaScript (frontend).
