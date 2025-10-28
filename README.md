@@ -80,8 +80,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 - **Visão Inicial da Arquitetura**: A arquitetura do PGReports é dividida em quatro camadas principais:
   1. Coleta: Captura dos logs do PostgreSQL via pgBadger incremental.
   2. Processamento: Parser dos logs e estruturação dos dados em formato legível.
-  3. Armazenamento: Organização dos relatórios em diretórios estruturados por data (ano/mês/semana).
-  4. Apresentação: Exibição dos resultados em uma interface web responsiva com filtros dinâmicos e gráficos interativos.
+  3. Armazenamento: Organização dos relatórios em diretórios estruturados por data (ano/mês/semana/dia).
+  4. Apresentação: Exibição dos resultados em uma interface web responsiva com gráficos dinâmicos e interativos.
     
 - **Padrões de Arquitetura**: O projeto adota uma Arquitetura em Camadas combinada com o padrão MVC (Model–View–Controller):
   - Model: Responsável pela leitura e organização dos dados dos logs.
@@ -90,7 +90,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Modelos C4**:
   1. Nível 1 (Contexto): O PGReports opera dentro da rede WEG, acessando instâncias PostgreSQL internas.
-  2. Nível 2 (Container): Divide-se entre servidor web, parser de logs (pgBadger) e base PostgreSQL para armazenamento de relatórios.
+  2. Nível 2 (Container): Divide-se entre servidor web, parser de logs (pgBadger) e Bucket MinIO S3 para armazenamento de relatórios.
   3. Nível 3 (Componentes): Inclui módulos de autenticação, parsing, visualização e agendamento.
   4. Nível 4 (Código): Implementações em Typescript, scripts Bash e Python.
 
