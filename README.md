@@ -85,9 +85,9 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
   4. Apresentação: Exibição dos resultados em uma interface web responsiva com filtros dinâmicos e gráficos interativos.
     
 - **Padrões de Arquitetura**: O projeto adota uma Arquitetura em Camadas combinada com o padrão MVC (Model–View–Controller):
-  - Model: responsável pela leitura e organização dos dados dos logs.
-  - View: camada de interface e dashboards web.
-  - Controller: lógica intermediária de negócio.
+  - Model: Responsável pela leitura e organização dos dados dos logs.
+  - View: Camada de interface e dashboards web.
+  - Controller: Lógica intermediária de negócio.
 
 - **Modelos C4**:
   1. Nível 1 (Contexto): O PGReports opera dentro da rede WEG, acessando instâncias PostgreSQL internas.
@@ -96,16 +96,16 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
   4. Nível 4 (Código): Implementações em Typescript, scripts Bash e Python.
 
 - **Mockups das Telas Principais**: As telas principais incluem:
-  - Calendário de relatórios: seleção de data e navegação entre períodos.
+  - Calendário de relatórios: Seleção de data e navegação entre períodos.
 <COLOCAR IMAGEM CALENDARIO AQUI>
-  - Dashboard inicial (Overview): visão geral das instâncias e métricas de desempenho.
+  - Dashboard inicial (Overview): Visão geral das instâncias e métricas de desempenho.
 <COLOCAR IMAGEM OVERVIEW AQUI>
-  - Aba “Top Queries”: exibe consultas mais custosas.
+  - Aba “Top Queries”: Exibe consultas mais custosas.
 <COLOCAR IMAGEM TOP AQUI>
 
 - **Decisões e Alternativas Consideradas**:
-    - Inicialmente foi considerado o uso direto de ferramentas como Grafana e Splunk, mas ambas se mostraram superficiais para logs PostgreSQL detalhados.
-    - Optou-se por desenvolver o PGReports com pgBadger, garantindo personalização e independência.
+    - Inicialmente foi considerado o uso direto de ferramentas já implementadas na WEG, como Grafana e Splunk, mas ambas se mostraram superficiais para logs PostgreSQL detalhados.
+    - Optou-se, então, por desenvolver o PGReports, garantindo personalização e independência para a empresa.
 
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
     - Escalabilidade: Processamento incremental permite adicionar novas instâncias sem afetar o desempenho.
@@ -117,20 +117,34 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
 
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação**:
-    - Typescript e Python: núcleo do backend e orquestração do pipeline (robusto ecossistema para parsing, automação e web).
+    - Typescript e Python: núcleo da interface e orquestração do pipeline.
     - Bash/Shell: rotinas de agendamento (cron/systemd timer), integração com pgBadger e manutenção/rotação de relatórios.
     - SQL (PostgreSQL): consultas administrativas e eventual persistência de metadados.
     - HTML/CSS/JavaScript: reports/camada de visualização (dashboards responsivos, filtros e interação com gráficos).
       
 - **Frameworks e Bibliotecas**:
 
-
-
-**FAZER**
-
-
-
-
+  | **Biblioteca / Ferramenta**  | **Função / Descrição**                                               | **Categoria**              |
+  | ---------------------------- | -------------------------------------------------------------------- | -------------------------- |
+  | **Python 3.x**               | Linguagem utilizada para automação.       | Automação        |
+  | **Typescript**                    | Linguagem base do projeto e interface da aplicação.             | Front / Web              |
+  | **Jinja2**                   | Template engine para renderização dinâmica de relatórios.            | Frontend / Template        |
+  | **pgBadger**                 | Parser de logs PostgreSQL e gerador de relatórios incrementais.      | Análise / Log              |
+  | **PostgreSQL**               | Banco de dados utilizado como base e origem dos logs.                | Banco de Dados             |
+  | **boto3 / botocore**         | Integração com AWS (S3), automação de backups e armazenamento.       | Cloud / Automação          |
+  | **paramiko**                 | Conexões seguras SSH para execuções remotas e transferências.        | Rede / Automação           |
+  | **airflow.providers.ssh**    | Hook de conexão do Airflow para tarefas programadas via SSH.         | Orquestração / DevOps      |
+  | **datetime / timedelta**     | Manipulação e controle temporal em rotinas automáticas.              | Utilitário / Sistema       |
+  | **re (Regex)**               | Filtragem de padrões e nomes de arquivos em logs.                    | Processamento / Parser     |
+  | **stat**                     | Controle de permissões e atributos de arquivos no sistema.           | Sistema / Segurança        |
+  | **os**                       | Manipulação de diretórios, variáveis de ambiente e automações.       | Sistema / Backend          |
+  | **Shell Script / Bash**      | Execução automatizada de processos e manutenção de relatórios.       | Automação / Sistema        |
+  | **VS Code**                  | IDE principal para desenvolvimento e integração com Git e extensões. | Desenvolvimento            |
+  | **Git / GitLab / GitHub**    | Versionamento, CI/CD e colaboração de código.                        | DevOps / Versionamento     |
+  | **Chart.js / Plotly**        | Visualização interativa de métricas e gráficos.                      | Frontend / Visualização    |
+  | **Bootstrap / Tailwind CSS** | Criação de interfaces responsivas e consistentes.                    | Design / UI                |
+  | **Nginx / Apache**           | Proxy reverso e camada de segurança HTTPS/TLS.                       | Infraestrutura / Segurança |
+  | **Cron / Systemd**           | Agendamento e monitoramento de execuções automáticas.                | Sistema / Automação        |
 
 - **Ferramentas de Desenvolvimento e Gestão**:
     - IDE/Editor: VS Code.
@@ -141,17 +155,26 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
     
 - **Licenciamento**:
 
-
-
-
-
-**FAZER**
-
-
-
-
-
-
+  - Projeto PgReports: 
+    - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o caso do repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
+  - Dependências:
+      | **Dependência / Ferramenta**              | **Função no Projeto**                                             | **Licença**        |
+      | ----------------------------------------- | ----------------------------------------------------------------- | ------------------ |
+      | **Python 3.x**                            | Linguagem principal de automação.                               | PSF License        |
+      | **Jinja2**                                | Template engine para renderização de relatórios.                  | BSD 3-Clause       |
+      | **pgBadger**                              | Parser e gerador de relatórios de logs PostgreSQL.                | PostgreSQL License |
+      | **PostgreSQL**                            | Banco de dados e origem dos logs analisados.                      | PostgreSQL License |
+      | **boto3 / botocore**                      | SDK da AWS para automação e integração com S3.                    | Apache License 2.0 |
+      | **paramiko**                              | Conexões seguras SSH entre servidores.                            | LGPL 2.1           |
+      | **airflow.providers.ssh**                 | Execução remota de tarefas no Airflow.                            | Apache License 2.0 |
+      | **re / os / stat / datetime / timedelta** | Módulos nativos do Python para manipulação de arquivos e sistema. | PSF License        |
+      | **Chart.js / Plotly**                     | Visualização interativa de métricas e relatórios.                 | MIT License        |
+      | **Bootstrap / Tailwind CSS**              | Frameworks CSS para design e responsividade.                      | MIT License        |
+      | **Git / GitLab / GitHub**                 | Versionamento e integração contínua (CI/CD).                      | MIT License        |
+      | **VS Code**                               | IDE de desenvolvimento e depuração.                               | MIT License        |
+      | **Shell Script / Bash**                   | Automação de processos e execução periódica de relatórios.        | GNU GPL v3         |
+      | **Nginx / Apache**                        | Proxy reverso e camada de segurança HTTPS.                        | BSD / Apache 2.0   |
+      | **Cron / Systemd**                        | Agendamento e monitoramento de rotinas.                           | GPL v2             |
 
 
 ### 3.4. Considerações de Segurança
