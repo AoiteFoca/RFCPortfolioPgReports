@@ -117,18 +117,18 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
 
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação**:
-    - Typescript e Python: núcleo da interface e orquestração do pipeline.
-    - Bash/Shell: rotinas de agendamento (cron/systemd timer), integração com pgBadger e manutenção/rotação de relatórios.
-    - SQL (PostgreSQL): consultas administrativas e eventual persistência de metadados.
-    - HTML/CSS/JavaScript: reports/camada de visualização (dashboards responsivos, filtros e interação com gráficos).
+    - Typescript e Python: Núcleo da interface e orquestração do pipeline.
+    - Bash/Shell: Rotinas de agendamento (cron/systemd timer), integração com pgBadger e manutenção/rotação de relatórios.
+    - SQL (PostgreSQL): Consultas administrativas e eventual persistência de metadados.
+    - HTML/CSS/JavaScript: Reports/camada de visualização (dashboards responsivos, filtros e interação com gráficos).
       
 - **Frameworks e Bibliotecas**:
 
   | **Biblioteca / Ferramenta**  | **Função / Descrição**                                               | **Categoria**              |
   | ---------------------------- | -------------------------------------------------------------------- | -------------------------- |
-  | **Python 3.x**               | Linguagem utilizada para automação.       | Automação        |
+  | **Python 3**               | Linguagem utilizada para automação.       | Automação        |
   | **Typescript**                    | Linguagem base do projeto e interface da aplicação.             | Front / Web              |
-  | **Jinja2**                   | Template engine para renderização dinâmica de relatórios.            | Frontend / Template        |
+  | **Jinja2**                   | Templates para renderização dinâmica de relatórios.            | Frontend / Template        |
   | **pgBadger**                 | Parser de logs PostgreSQL e gerador de relatórios incrementais.      | Análise / Log              |
   | **PostgreSQL**               | Banco de dados utilizado como base e origem dos logs.                | Banco de Dados             |
   | **boto3 / botocore**         | Integração com AWS (S3), automação de backups e armazenamento.       | Cloud / Automação          |
@@ -150,7 +150,7 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
     - IDE/Editor: VS Code.
     - Controle de versão: GitLab, merge requests e code review.
     - CI/CD: GitLab CI.
-    - Observabilidade: logs de aplicação/servidor/instância, métricas do host e integração com Grafana.
+    - Observabilidade: Logs de aplicação/servidor/instância, métricas do host e integração com Grafana.
     - Gestão: Jira.
     
 - **Licenciamento**:
@@ -158,23 +158,23 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
   - Projeto PgReports: 
     - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o caso do repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
   - Dependências:
-      | **Dependência / Ferramenta**              | **Função no Projeto**                                             | **Licença**        |
-      | ----------------------------------------- | ----------------------------------------------------------------- | ------------------ |
-      | **Python 3.x**                            | Linguagem principal de automação.                               | PSF License        |
-      | **Jinja2**                                | Template engine para renderização de relatórios.                  | BSD 3-Clause       |
-      | **pgBadger**                              | Parser e gerador de relatórios de logs PostgreSQL.                | PostgreSQL License |
-      | **PostgreSQL**                            | Banco de dados e origem dos logs analisados.                      | PostgreSQL License |
-      | **boto3 / botocore**                      | SDK da AWS para automação e integração com S3.                    | Apache License 2.0 |
-      | **paramiko**                              | Conexões seguras SSH entre servidores.                            | LGPL 2.1           |
-      | **airflow.providers.ssh**                 | Execução remota de tarefas no Airflow.                            | Apache License 2.0 |
-      | **re / os / stat / datetime / timedelta** | Módulos nativos do Python para manipulação de arquivos e sistema. | PSF License        |
-      | **Chart.js / Plotly**                     | Visualização interativa de métricas e relatórios.                 | MIT License        |
-      | **Bootstrap / Tailwind CSS**              | Frameworks CSS para design e responsividade.                      | MIT License        |
-      | **Git / GitLab / GitHub**                 | Versionamento e integração contínua (CI/CD).                      | MIT License        |
-      | **VS Code**                               | IDE de desenvolvimento e depuração.                               | MIT License        |
-      | **Shell Script / Bash**                   | Automação de processos e execução periódica de relatórios.        | GNU GPL v3         |
-      | **Nginx / Apache**                        | Proxy reverso e camada de segurança HTTPS.                        | BSD / Apache 2.0   |
-      | **Cron / Systemd**                        | Agendamento e monitoramento de rotinas.                           | GPL v2             |
+      | **Dependência / Ferramenta**              | **Licença**        |
+      | ----------------------------------------- | -------------------|
+      | **Python 3**                              | PSF License        |
+      | **Jinja2**                                | BSD 3-Clause       |
+      | **pgBadger**                              | PostgreSQL License |
+      | **PostgreSQL**                            | PostgreSQL License |
+      | **boto3 / botocore**                      | Apache License 2.0 |
+      | **paramiko**                              | LGPL 2.1           |
+      | **airflow.providers.ssh**                 | Apache License 2.0 |
+      | **re / os / stat / datetime / timedelta** | PSF License        |
+      | **Chart.js / Plotly**                     | MIT License        |
+      | **Bootstrap / Tailwind CSS**              | MIT License        |
+      | **Git / GitLab / GitHub**                 | MIT License        |
+      | **VS Code**                               | MIT License        |
+      | **Shell Script / Bash**                   | GNU GPL v3         |
+      | **Nginx / Apache**                        | BSD / Apache 2.0   |
+      | **Cron / Systemd**                        | GPL v2             |
 
 
 ### 3.4. Considerações de Segurança
@@ -187,26 +187,26 @@ Esta seção descreve os requisitos, arquitetura, design e considerações técn
     - Configuração insegura (TLS ausente, segredos em variáveis expostas, permissões amplas no host).
     
 - **Medidas de Mitigação**:
-    - **Controle de acesso:** autenticação corporativa (LDAP/SSO) e autorização por perfil (RBAC: DBA, leitura, admin).
+    - **Controle de acesso:** Autenticação corporativa (LDAP/SSO) e autorização por perfil (RBAC: DBA, leitura, admin).
     - **Segurança de transporte:** HTTPS/TLS término no reverse proxy (Nginx/Apache); HSTS e secure cookies.
-    - **Validação e sanitização de entrada:** whitelists de parâmetros, escaping rigoroso em templates Jinja2, Content-Security-Policy (CSP) para mitigar XSS.
-    - **Segregação de permissões:** usuário de sistema dedicado, least privilege, no-root containers (se Docker).
-    - **Proteção contra CSRF:** tokens anti-CSRF em POSTs sensíveis.
-    - **Proteção operacional:** rate limiting em endpoints críticos; timeouts e bulkheads para tarefas de parsing.
-    - **Gestão de segredos:** variáveis de ambiente/secret manager; nunca versionar credenciais.
-    - **Hardening & Logs:** cabeçalhos de segurança (X-Frame-Options, X-Content-Type-Options), auditoria de acessos, rotação/retenção (90 dias).
-    - **Backups e recuperação:** snapshots dos artefatos de relatório/índices, testes periódicos de restauração.
+    - **Validação e sanitização de entrada:** Whitelists de parâmetros, escaping rigoroso em templates Jinja2, Content-Security-Policy (CSP) para mitigar XSS.
+    - **Segregação de permissões:** Usuário de sistema dedicado, least privilege, no-root containers (se Docker).
+    - **Proteção contra CSRF:** Tokens anti-CSRF em POSTs sensíveis.
+    - **Proteção operacional:** Rate limiting em endpoints críticos; timeouts e bulkheads para tarefas de parsing.
+    - **Gestão de segredos:** Variáveis de ambiente/secret manager; nunca versionar credenciais.
+    - **Hardening & Logs:** Cabeçalhos de segurança (X-Frame-Options, X-Content-Type-Options), auditoria de acessos, rotação/retenção (90 dias).
+    - **Backups e recuperação:** Snapshots dos artefatos de relatório/índices, testes periódicos de restauração.
 
 - **Normas e Boas Práticas Seguidas**:
-    - OWASP Top: diretrizes para prevenção de vulnerabilidades web (XSS, auth, exposição de dados).
-    - ISO/IEC 27001: princípios de confidencialidade, integridade e disponibilidade (políticas, controle de acesso, trilhas de auditoria).
-    - LGPD (Lei nº 13.709/2018): princípio da minimização; tratamento apenas de dados técnicos necessários; anonimização/pseudonimização quando aplicável; logging sem PII; política de privacidade interna.
+    - OWASP: Diretrizes para prevenção de vulnerabilidades web (XSS, auth, exposição de dados).
+    - ISO/IEC 27001: Princípios de confidencialidade, integridade e disponibilidade (políticas, controle de acesso, trilhas de auditoria).
+    - LGPD (Lei nº 13.709/2018): Princípio da minimização, tratamento apenas de dados técnicos necessários, anonimização quando aplicável e política de privacidade interna.
     
 - **Responsabilidade Ética**:
-    - Privacidade por padrão: processar apenas o necessário para diagnóstico; mascarar ou suprimir PII acidental em logs.
-    - Transparência: registrar quais dados são coletados e por quê; disponibilizar política interna clara aos usuários.
-    - Uso responsável de dados e automações: auditoria de regras que destacam “gargalos” para evitar decisões enviesadas com supervisão humana sempre presente.
-    - Futuras extensões com IA: caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
+    - Privacidade por padrão: Processar apenas o necessário para diagnóstico; mascarar ou suprimir PII acidental em logs.
+    - Transparência: Registrar quais dados são coletados e por quê; disponibilizar política interna clara aos usuários.
+    - Uso responsável de dados e automações: Auditoria de regras que destacam “gargalos” para evitar decisões enviesadas com supervisão humana sempre presente.
+    - Futuras extensões com IA: Caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
 
 ### 3.5. Conformidade e Normas Aplicáveis
 O desenvolvimento e a operação do PGReports seguem rigorosamente as normas e legislações aplicáveis ao contexto de sistemas corporativos, com foco em segurança da informação, privacidade de dados e boas práticas de desenvolvimento de software.
