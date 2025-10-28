@@ -96,15 +96,15 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Mockups das Telas Principais**: As telas principais incluem:
   - Calendário de relatórios: Seleção de data e navegação entre períodos.
-<COLOCAR IMAGEM CALENDARIO AQUI>
+![Calendário de Relatórios](./images/reportscalendar.png)
   - Dashboard inicial (Overview): Visão geral das instâncias e métricas de desempenho.
-<COLOCAR IMAGEM OVERVIEW AQUI>
-  - Aba “Top Queries”: Exibe consultas mais custosas.
-<COLOCAR IMAGEM TOP AQUI>
+![Dashboard Overview](./images/reportsoverview.png)
+  - Aba “Top": Na área de queries, exibe as consultas mais custosas.
+![Dashboard Top Queries](./images/reportslongquery.png)
 
 - **Decisões e Alternativas Consideradas**:
-    - Inicialmente foi considerado o uso direto de ferramentas já implementadas na WEG, como Grafana e Splunk, mas ambas se mostraram superficiais para logs PostgreSQL detalhados.
-    - Optou-se, então, por desenvolver o PGReports, garantindo personalização e independência para a empresa.
+    - Inicialmente foi considerado o uso direto de ferramentas já implementadas na WEG, como Grafana e Splunk, mas ambas se mostraram superficiais para situações que solicitavam logs detalhados do PostgreSQL.
+    - Foi optado, então, por desenvolver o PGReports, garantindo personalização e independência para a empresa.
 
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
     - Escalabilidade: Processamento incremental permite adicionar novas instâncias sem afetar o desempenho.
