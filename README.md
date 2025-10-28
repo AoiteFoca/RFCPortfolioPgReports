@@ -6,7 +6,7 @@
 - **Título do Projeto**: PGReports.
 - **Nome do Estudante**: Nathan Cielusinski.
 - **Curso**: Engenharia de Software.
-- **Data de Entrega**: 29/10/2025.
+- **Data de Entrega**: 30/11/2025.
 
 # Resumo
 O PGReports é uma aplicação web desenvolvida para auxiliar na análise de logs e métricas de desempenho de instâncias PostgreSQL dentro dos ambientes corporativos da WEG. O sistema centraliza e transforma dados complexos de logs em informações acessíveis, permitindo que DBAs e analistas identifiquem rapidamente gargalos, queries custosas e comportamentos anômalos. O projeto destaca-se por sua abordagem direta ao log cru (raw log), possibilitando avaliações profundas e diagnósticos mais precisos. A aplicação visa otimizar o tempo de análise e aumentar a eficiência das equipes técnicas, tornando o processo de identificação e resolução de problemas mais ágil, visual e confiável.
@@ -243,14 +243,14 @@ Após a conclusão deste documento, o projeto PgReports seguirá para as etapas 
     - Avaliação da interface inicial e revisão de usabilidade.
 
 2. Desenvolvimento de Funcionalidades-Chave (Dezembro/2025 a Janeiro/2026)
-    - Implementação dos módulos Overview, Top Queries, etc.
+    - Testes com módulos Overview, Top Queries, etc.
     - Integração com autenticação corporativa (LDAP) e controle de acesso.
-    - Adição de exportação de relatórios em HTML.
+    - Aplicação de padrões visuais.
 
 3. Aprimoramento da Interface e Experiência do Usuário (Fevereiro/2026)
-    - Aplicação de padrões visuais.
     - Criação de dashboards interativos e filtros dinâmicos.
     - Inclusão de indicadores de performance e métricas visuais.
+    - Adição de exportação dos gráficos dos relatórios.
 
 4. Testes de Escalabilidade e Segurança (Março/2026)
     - Testes de carga em múltiplas instâncias PostgreSQL.
@@ -264,7 +264,7 @@ Após a conclusão deste documento, o projeto PgReports seguirá para as etapas 
 
 | **Marco** | **Descrição**                                      | **Data Estimada** |
 | --------- | -------------------------------------------------- | ----------------- |
-| M1        | Documento de Especificação Técnica finalizado      | 29/10/2025        |
+| M1        | Documento de Especificação Técnica finalizado      | 30/11/2025        |
 | M2        | Protótipo funcional do parser e dashboard básico   | 15/12/2025        |
 | M3        | Integração completa com PostgreSQL e autenticação  | 30/01/2026        |
 | M4        | Testes de desempenho e segurança                   | 15/03/2026        |
