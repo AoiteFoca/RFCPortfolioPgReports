@@ -195,9 +195,9 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - LGPD (Lei nº 13.709/2018): Princípio da minimização, tratamento apenas de dados técnicos necessários, anonimização quando aplicável e política de privacidade interna.
     
 - **Responsabilidade Ética**:
-    - Privacidade por padrão: Processar apenas o necessário para diagnóstico; mascarar ou suprimir PII acidental em logs.
-    - Transparência: Registrar quais dados são coletados e por quê; disponibilizar política interna clara aos usuários.
-    - Uso responsável de dados e automações: Auditoria de regras que destacam “gargalos” para evitar decisões enviesadas com supervisão humana sempre presente.
+    - Privacidade por padrão: Processar apenas o necessário para diagnóstico, mascarando ou suprimindo PIIs acidentais em logs.
+    - Transparência: Seguir a mesma configuração de exibição de dados que a WEG disponibiliza, sem alterações ou variações, puxando diretamente do arquivo postgresql.conf.
+    - Uso responsável de dados e automações: Auditoria de regras que destacam “gargalos” para evitar decisões enviesadas e com supervisão humana sempre presente.
     - Futuras extensões com IA: Caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
 
 ### 3.5. Conformidade e Normas Aplicáveis
