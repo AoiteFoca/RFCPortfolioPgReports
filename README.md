@@ -254,6 +254,19 @@ Após a conclusão deste documento, o projeto PgReports seguirá para as etapas 
     - Coleta de feedback e métricas de uso real.
     - Planejamento de melhorias e roadmap para nova versão.
 
+6. Automações (Maio/2026)
+    - Criar rotina de limpeza para reports no servidor Linux.
+    - Aplicar limpeza no Bucket para o Index principal.
+
+7. Melhorias (Junho/2026 a Julho/2026)
+    - Ajustar modelo de export de arquivos.
+    - Alterar extensão de arquivos.
+    - Reduzir tempo de transferência.
+    - Avaliar melhor horário para execução.
+    - Ajustes na interface Typescript (Opcional).
+    - Ajustes nos scripts Python.
+    - Planejamento de melhorias e roadmap para nova versão.
+
 | **Marco** | **Descrição**                                      | **Data Estimada** |
 | --------- | -------------------------------------------------- | ----------------- |
 | M1        | Documento de Especificação Técnica finalizado      | 30/11/2025        |
@@ -261,7 +274,8 @@ Após a conclusão deste documento, o projeto PgReports seguirá para as etapas 
 | M3        | Integração completa com PostgreSQL e autenticação  | 30/01/2026        |
 | M4        | Testes de desempenho e segurança                   | 15/03/2026        |
 | M5        | Implantação interna e validação com usuários reais | 10/04/2026        |
-| M6        | Entrega final Portfólio II                         | 30/04/2026        |
+| M6        | Automação de limpezas e melhorias na aplicação     | 10/05/2026        |
+| M7        | Entrega final Portfólio II                         | 10/07/2026        |
 
 ## 5. Referências
 POSTGRESQL GLOBAL DEVELOPMENT GROUP. PostgreSQL Documentation (v14–17).
