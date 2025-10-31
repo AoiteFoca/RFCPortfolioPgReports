@@ -67,15 +67,14 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
   3. Segurança: Acesso restrito à rede corporativa da WEG e autenticação via LDAP.
   4. Escalabilidade: Suporte à análise simultânea de múltiplas instâncias PostgreSQL.
   5. Disponibilidade: Operação contínua com logs processados em background via agendamentos (cron jobs).
-  6. Compatibilidade: Integração com PostgreSQL 14+.
+  6. Compatibilidade: Integração com PostgreSQL V14+.
 
 - **Aderência aos Requisitos da Linha de Projeto**: O PGReports é uma aplicação Web que atende aos critérios obrigatórios desta linha de projeto:
-  - Indexes do report desenvolvidos em HTML5, CSS3 e JavaScript (frontend).
-  - Interface desenvolvida em Typescript.
+  - Indexes dos reports desenvolvidos em HTML5, CSS3 e JavaScript (frontend).
+  - Interface da aplicação desenvolvida em Typescript.
   - Utilização de scripts Python durante o seu ciclo.
   - Integração com banco de dados PostgreSQL.
   - Geração de relatórios e visualizações dinâmicas (componentes web responsivos).
-  - Comunicação via HTTP/HTTPS com controle de acesso.
 
 ### 3.2. Considerações de Design
 - **Visão Inicial da Arquitetura**: A arquitetura do PGReports é dividida em quatro camadas principais:
@@ -108,7 +107,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - Foi optado, então, por desenvolver o PGReports, garantindo personalização e independência para a empresa.
 
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
-    - Escalabilidade: Processamento incremental permite adicionar novas instâncias sem afetar o desempenho.
+    - Escalabilidade: Além do processamento incremental dos reports, as configurações de inclusõa do projeto permitem adicionar novas instâncias sem afetar o desempenho da aplicação.
     - Resiliência: Logs corrompidos ou incompletos são ignorados automaticamente, mantendo a integridade dos relatórios.
     - Segurança:
         - Acesso restrito à rede corporativa (VPN interna).
