@@ -125,9 +125,9 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
   | **Biblioteca / Ferramenta**  | **Função / Descrição**                                               | **Categoria**              |
   | ---------------------------- | -------------------------------------------------------------------- | -------------------------- |
-  | **Python 3**               | Linguagem utilizada para automação.       | Automação        |
-  | **Typescript**                    | Linguagem base do projeto e interface da aplicação.             | Front / Web              |
-  | **Jinja2**                   | Templates para renderização dinâmica de relatórios.            | Frontend / Template        |
+  | **Python 3**                 | Linguagem utilizada para automação.                                  | Automação                  |
+  | **Typescript**               | Linguagem base do projeto e interface da aplicação.                  | Front / Web                |
+  | **Jinja2**                   | Templates para renderização dinâmica de relatórios.                  | Frontend / Template        |
   | **pgBadger**                 | Parser de logs PostgreSQL e gerador de relatórios incrementais.      | Análise / Log              |
   | **PostgreSQL**               | Banco de dados utilizado como base e origem dos logs.                | Banco de Dados             |
   | **boto3 / botocore**         | Integração com AWS (S3), automação de backups e armazenamento.       | Cloud / Automação          |
@@ -141,8 +141,6 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
   | **VS Code**                  | IDE principal para desenvolvimento e integração com Git e extensões. | Desenvolvimento            |
   | **Git / GitLab / GitHub**    | Versionamento, CI/CD e colaboração de código.                        | DevOps / Versionamento     |
   | **Chart.js / Plotly**        | Visualização interativa de métricas e gráficos.                      | Frontend / Visualização    |
-  | **Bootstrap / Tailwind CSS** | Criação de interfaces responsivas e consistentes.                    | Design / UI                |
-  | **Nginx / Apache**           | Proxy reverso e camada de segurança HTTPS/TLS.                       | Infraestrutura / Segurança |
   | **Cron / Systemd**           | Agendamento e monitoramento de execuções automáticas.                | Sistema / Automação        |
 
 - **Ferramentas de Desenvolvimento e Gestão**:
