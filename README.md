@@ -151,7 +151,6 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - Gestão: Jira.
     
 - **Licenciamento**:
-
   - Projeto PgReports: 
     - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o caso do repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
   - Dependências:
@@ -166,13 +165,10 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
       | **airflow.providers.ssh**                 | Apache License 2.0 |
       | **re / os / stat / datetime / timedelta** | PSF License        |
       | **Chart.js / Plotly**                     | MIT License        |
-      | **Bootstrap / Tailwind CSS**              | MIT License        |
       | **Git / GitLab / GitHub**                 | MIT License        |
       | **VS Code**                               | MIT License        |
       | **Shell Script / Bash**                   | GNU GPL v3         |
-      | **Nginx / Apache**                        | BSD / Apache 2.0   |
       | **Cron / Systemd**                        | GPL v2             |
-
 
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
@@ -184,15 +180,14 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - Configuração insegura (TLS ausente, segredos em variáveis expostas, permissões amplas no host).
     
 - **Medidas de Mitigação**:
-    - **Controle de acesso:** Autenticação corporativa (LDAP/SSO) e autorização por perfil (RBAC: DBA, leitura, admin).
-    - **Segurança de transporte:** HTTPS/TLS término no reverse proxy (Nginx/Apache); HSTS e secure cookies.
-    - **Validação e sanitização de entrada:** Whitelists de parâmetros, escaping rigoroso em templates Jinja2, Content-Security-Policy (CSP) para mitigar XSS.
-    - **Segregação de permissões:** Usuário de sistema dedicado, least privilege, no-root containers (se Docker).
+    - **Controle de acesso:** Autenticação corporativa (keycloak) e autorização por perfil (access e admin).
+    - **Validação e sanitização de entrada:** Whitelists de parâmetros, escaping rigoroso em templates Jinja2, Content-Security-Policy (CSP).
+    - **Segregação de permissões:** Usuário de sistema dedicado, least privilege.
     - **Proteção contra CSRF:** Tokens anti-CSRF em POSTs sensíveis.
-    - **Proteção operacional:** Rate limiting em endpoints críticos; timeouts e bulkheads para tarefas de parsing.
-    - **Gestão de segredos:** Variáveis de ambiente/secret manager; nunca versionar credenciais.
-    - **Hardening & Logs:** Cabeçalhos de segurança (X-Frame-Options, X-Content-Type-Options), auditoria de acessos, rotação/retenção (90 dias).
-    - **Backups e recuperação:** Snapshots dos artefatos de relatório/índices, testes periódicos de restauração.
+    - **Proteção operacional:** Rate limiting em endpoints críticos, timeouts e bulkheads para tarefas de parsing.
+    - **Gestão de segredos:** Variáveis de ambiente/secret manager, nunca versionar credenciais.
+    - **Hardening & Logs:** Auditoria de acessos, rotação/retenção (90 dias).
+    - **Backups e recuperação:** Snapshots dos artefatos de relatório, indexes, servidores, instâncias e *databases*.
 
 - **Normas e Boas Práticas Seguidas**:
     - OWASP: Diretrizes para prevenção de vulnerabilidades web (XSS, auth, exposição de dados).
