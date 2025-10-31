@@ -31,20 +31,21 @@ O PGReports é uma aplicação web desenvolvida para auxiliar na análise de log
 
 * **Diferenciação/Ineditismo**: Trabalhar com o "log cru" de forma detalhada, profunda e direta para apresentar os dados em uma exibição prática e intuitiva.
 
-* **Limitações**: Como o PGReports surgiu para suprir uma necessidade existente da empresa, seu foco está voltado para a instância geral, o que não abrange a avaliação individual dos bancos de dados presentes nela. Vale ressaltar que a aplicação pode gerar insights positivos quanto à melhorias de aplicações e databases individuais, mas os reports não são voltados às _databases_, e sim à instância em que estes se localizam.
+* **Limitações**: Como o PGReports surgiu para suprir uma necessidade existente da empresa, abrangendo apenas ambientes gerenciados pela T.I. WEG, seu foco está voltado para a instância geral, o que não abrange a avaliação individual dos bancos de dados presentes nela. Vale ressaltar que a aplicação pode gerar insights positivos quanto à melhorias de aplicações e databases individuais, mas os reports não são voltados às _databases_, e sim à instância em que estes se localizam.
 
 * **Normas e Legislações Aplicáveis**: O desenvolvimento e a operação do PGReports seguem diretrizes de conformidade técnica e de proteção de dados, assegurando que informações corporativas sejam tratadas com segurança e responsabilidade.
   - LGPD (Lei Geral de Proteção de Dados – Lei nº 13.709/2018):
-O PGReports não coleta dados pessoais de usuários finais. Todos os logs processados são provenientes de servidores internos e possuem natureza técnica, não identificando pessoas físicas. Caso haja necessidade futura de integração com dados sensíveis, será aplicado o princípio de minimização e anonimização conforme a LGPD.
+O PGReports não coleta dados pessoais de usuários finais. Todos os logs processados são provenientes de servidores internos e possuem natureza técnica, não identificando pessoas físicas. Caso haja necessidade futura de integração com dados sensíveis.
   - ISO/IEC 27001 – Segurança da Informação: As práticas de controle de acesso, armazenamento seguro e versionamento seguem os princípios da norma ISO/IEC 27001, garantindo confidencialidade, integridade e disponibilidade das informações.
   - OWASP: O sistema foi projetado com base nas boas práticas de segurança de aplicações web, prevenindo riscos como injeção de código, falhas de autenticação e exposição indevida de dados.
   - Política Interna de Segurança WEG: O PGReports opera exclusivamente na rede corporativa, observando as políticas internas de TI e conformidade da WEG, com controle de acesso restrito a usuários autenticados e autorização hierárquica.
 
 * **Métricas de Sucesso**: O sucesso do PGReports será avaliado pela eficiência e impacto direto nas operações de análise de dados da WEG. Entre os principais indicadores estão:
   - Redução do tempo de diagnóstico de falhas em bancos PostgreSQL.
-  - Identificação de gargalos e consultas ineficientes, prevenindo incidentes.
+  - Identificação de gargalos e queries ineficientes, prevenindo incidentes.
   - Aumento da produtividade das equipes técnicas, com centralização das informações.
   - Melhoria na performance das aplicações e no uso dos recursos do servidor.
+  - Maior rastreabilidade.
   - Adoção interna crescente e feedback positivo dos usuários.
 
 ## 3. Especificação Técnica
