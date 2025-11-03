@@ -89,10 +89,10 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
   - Controller: Lógica intermediária de negócio.
 
 - **Modelos C4**:
-  1. Nível 1 (Contexto): O PGReports opera dentro da rede WEG, acessando instâncias PostgreSQL internas.
-  2. Nível 2 (Container): Divide-se entre servidor web, parser de logs (pgBadger) e Bucket MinIO S3 para armazenamento de relatórios.
-  3. Nível 3 (Componentes): Inclui módulos de autenticação, parsing, visualização e agendamento.
-  4. Nível 4 (Código): Implementações em Typescript, scripts Bash e Python.
+  1. Nível 1: O PGReports opera dentro da rede WEG, acessando instâncias PostgreSQL internas.
+  2. Nível 2: Divide-se entre servidor web, parser de logs (pgBadger) e Bucket MinIO S3 para armazenamento de relatórios.
+  3. Nível 3: Inclui módulos de autenticação, parsing, visualização e agendamento.
+  4. Nível 4: Implementações em Typescript, scripts Bash e Python.
 
 - **Mockups das Telas Principais**: As telas principais incluem:
   - Calendário de relatórios: Seleção de data e navegação entre períodos.
