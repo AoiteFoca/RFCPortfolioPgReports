@@ -90,7 +90,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Modelos C4**:
   1. Nível 1: O PGReports opera dentro da rede WEG, acessando instâncias PostgreSQL internas.
-  2. Nível 2: Divide-se entre servidor web, parser de logs (pgBadger) e Bucket MinIO S3 para armazenamento de relatórios.
+  2. Nível 2: Divide-se entre servidor, parser de logs (pgBadger) e Bucket MinIO S3 para armazenamento de relatórios.
   3. Nível 3: Inclui módulos de autenticação, parsing, visualização e agendamento.
   4. Nível 4: Implementações em Typescript, scripts Bash e Python.
 
@@ -104,10 +104,10 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Decisões e Alternativas Consideradas**:
     - Inicialmente foi considerado o uso direto de ferramentas já implementadas na WEG, como Grafana e Splunk, mas ambas se mostraram superficiais para situações que solicitavam logs detalhados do PostgreSQL.
-    - Foi optado, então, por desenvolver o PGReports, garantindo personalização e independência para a empresa.
+    - Foi optado, então, por desenvolver o PGReports, garantindo personalização e independência para suprir a demanda da empresa WEG.
 
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
-    - Escalabilidade: Além do processamento incremental dos reports, as configurações de inclusõa do projeto permitem adicionar novas instâncias sem afetar o desempenho da aplicação.
+    - Escalabilidade: Além do processamento incremental dos reports, as configurações de inclusão do projeto permitem adicionar novas instâncias sem afetar o desempenho da aplicação.
     - Resiliência: Logs corrompidos ou incompletos são ignorados automaticamente, mantendo a integridade dos relatórios.
     - Segurança:
         - Acesso restrito à rede corporativa (VPN interna).
@@ -145,7 +145,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Ferramentas de Desenvolvimento e Gestão**:
     - IDE/Editor: VS Code.
-    - Controle de versão: GitLab, merge requests e code review.
+    - Controle de versão: GitLab.
     - CI/CD: GitLab CI.
     - Observabilidade: Logs de aplicação/servidor/instância, métricas do host e integração com Grafana.
     - Gestão: Jira.
@@ -180,6 +180,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - Configuração insegura (TLS ausente, segredos em variáveis expostas, permissões amplas no host).
     
 - **Medidas de Mitigação**:
+    - **Masks:** Informações sensíveis serão tratadas com exibição mascarada.
     - **Controle de acesso:** Autenticação corporativa (keycloak) e autorização por perfil (access e admin).
     - **Validação e sanitização de entrada:** Whitelists de parâmetros, escaping rigoroso em templates Jinja2, Content-Security-Policy (CSP).
     - **Segregação de permissões:** Usuário de sistema dedicado, least privilege.
@@ -197,7 +198,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 - **Responsabilidade Ética**:
     - Privacidade por padrão: Processar apenas o necessário para diagnóstico, mascarando ou suprimindo PIIs acidentais em logs.
     - Transparência: Seguir a mesma configuração de exibição de dados que a WEG disponibiliza, sem alterações ou variações, puxando diretamente do arquivo postgresql.conf.
-    - Uso responsável de dados e automações: Auditoria de regras que destacam “gargalos” para evitar decisões enviesadas e com supervisão humana sempre presente.
+    - Uso responsável de dados e automações: Auditoria de regras que destacam “gargalos” para evitar decisões errôneas e sempre com supervisão humana presente.
     - Futuras extensões com IA: Caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
 
 ### 3.5. Conformidade e Normas Aplicáveis
