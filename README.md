@@ -16,7 +16,7 @@ O PGReports é uma aplicação web desenvolvida para auxiliar na análise de log
   
 - **Justificativa**: Com a alta demanda de instâncias e bancos de dados PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _environments_.
   
-- **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por bancos de dados para identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
+- **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por *databases* para identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
 
 ## 2. Descrição do Projeto
 * **Linha de Projeto**: O PGReports é uma aplicação web disponibilizada na rede interna da empresa WEG.
