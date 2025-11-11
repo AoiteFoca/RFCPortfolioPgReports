@@ -145,7 +145,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Ferramentas de Desenvolvimento e Gestão**:
     - IDE/Editor: VS Code.
-    - Controle de versão: GitLab.
+    - Versionamento: GitLab.
     - CI/CD: GitLab CI.
     - Observabilidade: Logs de aplicação/servidor/instância, métricas do host e integração com Grafana.
     - Gestão: Jira.
