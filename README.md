@@ -152,7 +152,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     
 - **Licenciamento**:
   - Projeto PgReports: 
-    - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o caso do repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
+    - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
   - Dependências:
       | **Dependência / Ferramenta**              | **Licença**        |
       | ----------------------------------------- | -------------------|
