@@ -134,7 +134,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
   | **paramiko**                 | Conexões seguras SSH para execuções remotas e transferências.        | Rede / Automação           |
   | **airflow.providers.ssh**    | Hook de conexão do Airflow para tarefas programadas via SSH.         | Orquestração / DevOps      |
   | **datetime / timedelta**     | Manipulação e controle temporal em rotinas automáticas.              | Utilitário / Sistema       |
-  | **re (Regex)**               | Filtragem de padrões e nomes de arquivos em logs.                    | Processamento / Parser     |
+  | **re (Regex)**               | Filtragem de dados sensíveis e nomes de arquivos em logs.                    | Processamento / Parser     |
   | **stat**                     | Controle de permissões e atributos de arquivos no sistema.           | Sistema / Segurança        |
   | **os**                       | Manipulação de diretórios, variáveis de ambiente e automações.       | Sistema / Backend          |
   | **Shell Script / Bash**      | Execução automatizada de processos e manutenção de relatórios.       | Automação / Sistema        |
