@@ -12,7 +12,7 @@
 O PGReports é uma aplicação web desenvolvida para auxiliar na análise de logs e métricas de desempenho de instâncias PostgreSQL dentro dos ambientes corporativos da WEG. O sistema centraliza e transforma dados complexos de logs em informações acessíveis, permitindo que DBAs e analistas identifiquem rapidamente gargalos, queries custosas e comportamentos atípicos. O projeto destaca-se por sua abordagem direta ao log cru *(raw log)*, possibilitando avaliações profundas e diagnósticos mais precisos. A aplicação visa otimizar o tempo de análise e aumentar a eficiência das equipes técnicas, tornando o processo de identificação e resolução de problemas mais ágil, visual e confiável.
 
 ## 1. Introdução
-- **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de BASIS, suporte de infraestrutura e para auxiliar os colaboradores responsáveis por _databases_ que estejam ligadas à aplicações.
+- **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de SAP BASIS (SAP Business Application Software Integrated Solution), suporte de infraestrutura e para auxiliar os colaboradores responsáveis por _databases_ que estejam ligadas à aplicações.
   
 - **Justificativa**: Com a alta demanda de instâncias e bancos de dados PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _environments_.
   
@@ -45,7 +45,7 @@ O PGReports não coleta dados pessoais de usuários finais. Todos os logs proces
   - Identificação de gargalos e queries ineficientes, prevenindo incidentes.
   - Aumento da produtividade das equipes técnicas, com centralização das informações.
   - Melhoria na performance das aplicações e no uso dos recursos do servidor.
-  - Maior rastreabilidade.
+  - Maior rastreabilidade em ações de usuários dos bancos de dados PostgreSQL.
   - Adoção interna crescente e feedback positivo dos usuários.
 
 ## 3. Especificação Técnica
@@ -237,7 +237,7 @@ Após a conclusão deste documento, o projeto PgReports seguirá para as etapas 
 
 2. Desenvolvimento de Funcionalidades-Chave (Dezembro/2025 a Janeiro/2026)
     - Testes com módulos Overview, Top Queries, etc.
-    - Integração com autenticação corporativa (LDAP) e controle de acesso.
+    - Integração com autenticação corporativa (LDAP) e controle de acesso (Keycloak).
     - Aplicação de padrões visuais.
 
 3. Aprimoramento da Interface e Experiência do Usuário (Fevereiro/2026)
