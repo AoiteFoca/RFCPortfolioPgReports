@@ -53,13 +53,14 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 ### 3.1. Requisitos de Software
 - **Requisitos Funcionais (RF)**:
-  1. O sistema deve processar logs brutos (raw logs) do PostgreSQL e gerar relatórios incrementais.
-  2. O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
-  3. O sistema deve exibir categorias separadas por tipos de evento (erro, checkpoint, vacuum, lock).
-  4. O sistema deve exibir métricas de desempenho em dashboards visuais, incluindo tempo médio de execução, queries mais custosas e sessões ativas.
-  5. O usuário deve poder baixar os gráficos dos relatórios em formato PNG.
-  6. O sistema deve permitir o controle de acesso autenticado (login interno via LDAP corporativo).
-  7. O administrador deve poder configurar o ciclo de retenção dos relatórios (lifetime de 3 meses).
+  1. Os reports devem ser gerados e exibidos de forma D-1 (disponível após um dia).
+  2. O sistema deve processar logs brutos (raw logs) do PostgreSQL e gerar relatórios incrementais.
+  3. O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
+  4. O sistema deve exibir categorias separadas por tipos de evento (erro, checkpoint, vacuum, lock).
+  5. O sistema deve exibir métricas de desempenho em dashboards visuais, incluindo tempo médio de execução, queries mais custosas e sessões ativas.
+  6. O usuário deve poder baixar os gráficos dos relatórios em formato PNG.
+  7. O sistema deve permitir o controle de acesso autenticado (login interno via LDAP corporativo).
+  8. O administrador deve poder configurar o ciclo de retenção dos relatórios (lifetime de 3 meses).
 
 - **Requisitos Não-Funcionais (RNF)**:
   1. Desempenho: Os relatórios devem ser gerados de forma incremental, otimizando tempo e consumo de recursos.
