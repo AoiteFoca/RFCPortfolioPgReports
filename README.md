@@ -216,11 +216,11 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 - **Mockups das Telas Principais**: As telas principais incluem:
   - Calendário de relatórios: Seleção de data e navegação entre períodos.
-![Calendário de Relatórios](./images/reportscalendar.png)
+![Calendário de Relatórios](./images/mock/reportscalendar.png)
   - Dashboard inicial (Overview): Visão geral das instâncias e métricas de desempenho.
-![Dashboard Overview](./images/reportsoverview.png)
+![Dashboard Overview](./images/mock/reportsoverview.png)
   - Aba “Top": Na área de queries, exibe as consultas mais custosas.
-![Dashboard Top Queries](./images/reportslongquery.png)
+![Dashboard Top Queries](./images/mock/reportslongquery.png)
 
 - **Decisões e Alternativas Consideradas**:
     - Inicialmente foi considerado o uso direto de ferramentas já implementadas na WEG, como Grafana e Splunk, mas ambas se mostraram superficiais para situações que solicitavam logs detalhados do PostgreSQL.
