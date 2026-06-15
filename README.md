@@ -297,41 +297,53 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
     - Os acessos, erros e operações relevantes devem ser registrados para possibilitar auditoria e rastreabilidade.
 
 ### 3.3. Stack Tecnológica
-- **Linguagens de Programação**:
-    - Typescript e Python: Núcleo da interface e orquestração do pipeline.
-    - Bash/Shell: Rotinas de agendamento (cron/systemd timer), integração com pgBadger e manutenção/rotação de relatórios.
-    - SQL (PostgreSQL): Consultas administrativas e eventual persistência de metadados.
-    - HTML/CSS/JavaScript: Reports/camada de visualização (dashboards responsivos, filtros e interação com gráficos).
-      
-- **Frameworks e Bibliotecas**:
+- **Linguagens de Programação e Marcações**:
+  - **TypeScript**: Utilizado no desenvolvimento da interface web do PGReports, sendo responsável pela navegação, filtros, componentes visuais e interação do usuário com os relatórios;
+  - **Python**: Utilizado nas rotinas de automação, transferência, processamento e integração, é responsável por tarefas relacionadas ao Airflow, MinIO e manipulação dos arquivos de relatório;
+  - **Bash / Shell Script**: Utilizado na execução de comandos do sistema operacional, gerencia as rotinas de processamento, manutenção, limpeza e execução do pgBadger;
+  - **SQL**: Utilizado em consultas administrativas e na obtenção de informações técnicas das instâncias PostgreSQL, quando necessário.
+  - **HTML5, CSS3 e JavaScript**: Utilizados na estrutura e apresentação dos relatórios, são os responsáveis pelos dashboards, filtros, gráficos e componentes visuais exibidos ao usuário.
 
-  | **Biblioteca / Ferramenta**  | **Função / Descrição**                                               | **Categoria**              |
-  | ---------------------------- | -------------------------------------------------------------------- | -------------------------- |
-  | **Python 3**                 | Linguagem utilizada para automação.                                  | Automação                  |
-  | **Typescript**               | Linguagem base do projeto e interface da aplicação.                  | Front / Web                |
-  | **Jinja2**                   | Templates para renderização dinâmica de relatórios.                  | Frontend / Template        |
-  | **pgBadger**                 | Parser de logs PostgreSQL e gerador de relatórios incrementais.      | Análise / Log              |
-  | **PostgreSQL**               | Banco de dados utilizado como base e origem dos logs.                | Banco de Dados             |
-  | **boto3 / botocore**         | Integração com AWS (S3), automação de backups e armazenamento.       | Cloud / Automação          |
-  | **paramiko**                 | Conexões seguras SSH para execuções remotas e transferências.        | Rede / Automação           |
-  | **airflow.providers.ssh**    | Hook de conexão do Airflow para tarefas programadas via SSH.         | Orquestração / DevOps      |
-  | **datetime / timedelta**     | Manipulação e controle temporal em rotinas automáticas.              | Utilitário / Sistema       |
-  | **re (Regex)**               | Filtragem de dados sensíveis e nomes de arquivos em logs.                    | Processamento / Parser     |
-  | **stat**                     | Controle de permissões e atributos de arquivos no sistema.           | Sistema / Segurança        |
-  | **os**                       | Manipulação de diretórios, variáveis de ambiente e automações.       | Sistema / Backend          |
-  | **Shell Script / Bash**      | Execução automatizada de processos e manutenção de relatórios.       | Automação / Sistema        |
-  | **VS Code**                  | IDE principal para desenvolvimento e integração com Git e extensões. | Desenvolvimento            |
-  | **Git / GitLab / GitHub**    | Versionamento, CI/CD e colaboração de código.                        | DevOps / Versionamento     |
-  | **Chart.js / Plotly**        | Visualização interativa de métricas e gráficos.                      | Frontend / Visualização    |
-  | **Cron / Systemd**           | Agendamento e monitoramento de execuções automáticas.                | Sistema / Automação        |
+- **Bibliotecas e Componentes de Software**:
+
+| **Tecnologia**                   | **Função no PGReports**                                                                                              | **Categoria**            |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| **Jinja2**                       | Renderização de templates e geração dinâmica de conteúdo HTML, quando aplicável.                                     | Templates                |
+| **pgBadger**                     | Processamento dos logs PostgreSQL e geração incremental de relatórios HTML.                                          | Análise de logs          |
+| **boto3 / botocore**             | Comunicação com o MinIO por meio da API compatível com S3, realizando leitura, envio e gerenciamento dos relatórios. | Armazenamento            |
+| **Paramiko**                     | Realização de conexões SSH e transferências seguras entre servidores.                                                | Comunicação remota       |
+| **apache-airflow-providers-ssh** | Disponibilização de hooks e operadores SSH para tarefas executadas pelo Apache Airflow.                              | Orquestração             |
+| **Chart.js / Plotly**            | Geração de gráficos e visualizações interativas na interface web.                                                    | Visualização             |
+| **datetime / timedelta**         | Manipulação de datas e períodos utilizados nas rotinas automáticas.                                                  | Biblioteca padrão Python |
+| **re**                           | Aplicação de expressões regulares para filtragem, validação e mascaramento de informações.                           | Biblioteca padrão Python |
+| **os**                           | Manipulação de diretórios, arquivos, variáveis de ambiente e operações do sistema.                                   | Biblioteca padrão Python |
+| **stat**                         | Controle e consulta de permissões e atributos de arquivos.                                                           | Biblioteca padrão Python |
+|
+
+- **Plataformas e Infraestrutura**:
+
+| **Tecnologia**                         | **Função no PGReports**                                                                            |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **PostgreSQL**                         | Origem dos logs e das informações técnicas processadas pelo PGReports.                             |
+| **MinIO S3**                           | Armazenamento dos relatórios, índices, gráficos e demais arquivos gerados.                         |
+| **Apache Airflow**                     | Orquestração e acompanhamento das rotinas de coleta, transferência, processamento e armazenamento. |
+| **Cron / systemd**                     | Execução de rotinas locais e tarefas periódicas no sistema operacional, quando aplicável.          |
+| **GitLab CI/CD**                       | Automação dos processos de integração, validação e implantação do projeto.                         |
+| **LDAP / Active Directory / Keycloak** | Autenticação e controle de acesso dos usuários internos, conforme a arquitetura adotada.           |
+|
 
 - **Ferramentas de Desenvolvimento e Gestão**:
-    - IDE/Editor: VS Code.
-    - Versionamento: GitLab.
-    - CI/CD: GitLab CI.
-    - Observabilidade: Logs de aplicação/servidor/instância, métricas do host e integração com Grafana.
-    - Gestão: Jira.
+
+| **Ferramenta**         | **Utilização**                                                                        |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| **Visual Studio Code** | Ambiente principal utilizado para desenvolvimento e manutenção do código.             |
+| **Git**                | Controle de versão do código-fonte.                                                   |
+| **GitLab**             | Hospedagem do repositório, colaboração e execução dos pipelines de CI/CD.             |
+| **Jira**               | Organização das atividades, tarefas, melhorias e correções do projeto.                |
+| **Grafana**            | Apoio à observabilidade dos servidores, serviços e rotinas relacionadas ao PGReports. |
+|
     
+
 - **Licenciamento**:
   - Projeto PgReports: 
     - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
@@ -351,6 +363,7 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
       | **VS Code**                               | MIT License        |
       | **Shell Script / Bash**                   | GNU GPL v3         |
       | **Cron / Systemd**                        | GPL v2             |
+      |
 
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
