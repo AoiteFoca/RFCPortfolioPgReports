@@ -89,11 +89,124 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
   - View: Camada de interface e dashboards web.
   - Controller: Lógica intermediária de negócio.
 
+
 - **Modelos C4**:
-  1. Nível 1: O PGReports opera dentro da rede WEG, acessando instâncias PostgreSQL internas.
-  2. Nível 2: Divide-se entre servidor, parser de logs (pgBadger) e Bucket MinIO S3 para armazenamento de relatórios.
-  3. Nível 3: Inclui módulos de autenticação, parsing, visualização e agendamento.
-  4. Nível 4: Implementações em Typescript, scripts Bash e Python.
+  1. Nível 1 — Diagrama de Contexto do Sistema:
+    - Objetivo:
+      - Mostrar o PGReports de forma geral, sem entrar nos detalhes internos da aplicação, focando nos usuários e sistemas externos que se comunicam com a aplicação.
+
+    - Sistema principal:
+      - PGReports:
+        - Aplicação web interna usada para transformar logs e métricas do PostgreSQL em relatórios mais fáceis de consultar.
+        - Ajuda DBAs, analistas BASIS e responsáveis por databases a identificar gargalos, queries demoradas, eventos, locks e outros problemas.
+
+    - Usuários:
+      - DBA:
+        - Consulta relatórios, dashboards e informações de desempenho das instâncias PostgreSQL.
+      - Analista BASIS:
+        - Usa os dados do PGReports para apoiar análises e chamados relacionados às aplicações.
+      - Responsável por Databases:
+        - Acompanha os ambientes e verifica queries, eventos e indicadores relacionados aos bancos sob sua responsabilidade.
+
+    - Sistemas externos:
+      - Instâncias PostgreSQL:
+        - Geram os logs e métricas usados pelo PGReports.
+      - Autenticação Corporativa:
+        - Valida o acesso dos usuários internos por LDAP, AD ou Keycloak.
+      - MinIO S3:
+        - Armazena os relatórios, índices e demais arquivos gerados.
+
+  2. Nível 2 — Diagrama de Contêineres:
+    - Objetivo:
+      - Mostrar as principais partes que formam o PGReports e a responsabilidade de cada uma.
+
+    - Contêineres:
+      - Interface Web / Dashboard:
+        - Exibe calendário, overview, top queries, events, sessions, locks e outros relatórios visuais.
+        - Desenvolvida com TypeScript, HTML, CSS e JavaScript.
+
+      - Serviço de Aplicação:
+        - Recebe as solicitações da interface, aplica filtros, valida acessos e entrega os dados para o frontend.
+        - Desenvolvido principalmente em Python.
+
+      - Processador de Logs:
+        - Usa pgBadger, Python e Bash para transformar logs brutos do PostgreSQL em relatórios estruturados.
+
+      - Agendador / Automação:
+        - Usa Cron, Airflow, GitLab CI/CD e scripts para disparar geração, atualização, transferência e limpeza dos relatórios.
+
+    - Armazenamento:
+      - Bucket MinIO S3:
+        - Guarda os relatórios processados, índices, gráficos e artefatos organizados por ambiente, servidor e data.
+
+    - Sistemas externos:
+      - Instâncias PostgreSQL:
+        - Fornecem os logs que serão processados.
+
+      - Autenticação Corporativa:
+        - Valida os usuários que acessam a aplicação.
+
+  3. Nível 3 — Diagrama de Componentes:
+    - Objetivo:
+      - Mostrar os principais módulos internos do PGReports, principalmente dentro do Serviço de Aplicação.
+
+    - Componentes:
+      - API / Controller:
+        - Recebe as requisições da interface e direciona cada solicitação para o módulo correto.
+
+      - Módulo de Autenticação:
+        - Valida login, perfil e permissão dos usuários.
+
+      - Módulo de Filtros e Consulta:
+        - Aplica filtros por ambiente, servidor, período, database, usuário, evento e tipo de query.
+
+      - Módulo de Leitura de Relatórios:
+        - Localiza e lê os relatórios armazenados no MinIO S3.
+
+      - Módulo de Parsing e Análise:
+        - Interpreta os arquivos processados e organiza os dados de overview, top queries, events, sessions, locks, checkpoints e vacuums.
+
+      - Módulo de Visualização:
+        - Prepara gráficos, tabelas, indicadores e demais informações que serão exibidas na interface.
+
+      - Módulo de Agendamento:
+        - Controla as rotinas automáticas de geração, atualização e limpeza dos relatórios.
+
+      - Módulo de Auditoria e Erros:
+        - Registra acessos, falhas de leitura, erros de processamento e ações importantes do sistema.
+
+  4. Nível 4 — Diagrama de Código:
+    - Objetivo:
+      - Mostrar os detalhes de implementação de um componente específico do PGReports.
+
+    - Implementações:
+      - TypeScript:
+        - Usado na interface, navegação, filtros, componentes visuais e comunicação com o backend.
+
+      - Python:
+        - Usado no serviço de aplicação, leitura de relatórios, automações e integração com o MinIO.
+
+      - Bash / Shell Script:
+        - Usado nas rotinas de coleta, execução do pgBadger, transferência e limpeza de arquivos.
+
+      - SQL:
+        - Usado em consultas administrativas e na integração com ambientes PostgreSQL.
+
+    - Exemplos de classes ou módulos:
+      - ReportController:
+        - Recebe as solicitações relacionadas aos relatórios.
+      - ReportQueryService:
+        - Coordena as consultas e os filtros aplicados.
+      - MinioReportRepository:
+        - Acessa os relatórios armazenados no MinIO S3.
+      - ReportParser:
+        - Interpreta o conteúdo dos relatórios.
+      - ReportMapper:
+        - Organiza os dados no formato usado pela interface.
+      - AuthorizationService:
+        - Valida o usuário e suas permissões.
+      - AuditLogger:
+        - Registra acessos, erros e downloads.
 
 - **Mockups das Telas Principais**: As telas principais incluem:
   - Calendário de relatórios: Seleção de data e navegação entre períodos.
