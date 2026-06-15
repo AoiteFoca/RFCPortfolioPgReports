@@ -117,6 +117,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
       - MinIO S3:
         - Armazena os relatórios, índices e demais arquivos gerados.
 
+  ![Diagrama de Nível 1 - Modelo C4](images/c4model/ModelC4Nivel1.png)
+
   2. Nível 2 — Diagrama de Contêineres:
     - Objetivo:
       - Mostrar as principais partes que formam o PGReports e a responsabilidade de cada uma.
@@ -147,6 +149,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
       - Autenticação Corporativa:
         - Valida os usuários que acessam a aplicação.
 
+  ![Diagrama de Nível 2 - Modelo C4](images/c4model/ModelC4Nivel2.png)
+
   3. Nível 3 — Diagrama de Componentes:
     - Objetivo:
       - Mostrar os principais módulos internos do PGReports, principalmente dentro do Serviço de Aplicação.
@@ -175,6 +179,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
       - Módulo de Auditoria e Erros:
         - Registra acessos, falhas de leitura, erros de processamento e ações importantes do sistema.
+
+  ![Diagrama de Nível 3 - Modelo C4](images/c4model/ModelC4Nivel3.png)
 
   4. Nível 4 — Diagrama de Código:
     - Objetivo:
@@ -208,6 +214,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - Valida o usuário e suas permissões.
       - AuditLogger:
         - Registra acessos, erros e downloads.
+
+  ![Diagrama de Nível 4 - Modelo C4](images/c4model/ModelC4Nivel4.png)
 
 - **Mockups das Telas Principais**: As telas principais incluem:
   - Calendário de relatórios: Seleção de data e navegação entre períodos.
