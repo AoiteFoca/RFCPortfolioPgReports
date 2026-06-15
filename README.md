@@ -98,7 +98,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
     - Sistema principal:
       - PGReports:
-        - Aplicação web interna usada para transformar logs e métricas do PostgreSQL em relatórios mais fáceis de consultar.
+        - Aplicação web usada para transformar logs e métricas do PostgreSQL em relatórios mais fáceis de consultar.
         - Ajuda DBAs, analistas BASIS e responsáveis por databases a identificar gargalos, queries demoradas, eventos, locks e outros problemas.
 
     - Usuários:
@@ -156,9 +156,6 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
       - Mostrar os principais módulos internos do PGReports, principalmente dentro do Serviço de Aplicação.
 
     - Componentes:
-      - API / Controller:
-        - Recebe as requisições da interface e direciona cada solicitação para o módulo correto.
-
       - Módulo de Autenticação:
         - Valida login, perfil e permissão dos usuários.
 
