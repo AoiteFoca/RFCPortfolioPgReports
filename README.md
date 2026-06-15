@@ -56,7 +56,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 - **Requisitos Funcionais (RF)**:
   1. RF-001 — Geração de relatórios D-1:
       - O sistema deve gerar e disponibilizar os relatórios no modelo D-1, permitindo que os dados de um determinado dia sejam consultados a partir do dia seguinte.
-  2. RF-002 — Processamento incremental
+  2. RF-002 — Processamento incremental:
       - O sistema deve processar os logs brutos gerados pelas instâncias PostgreSQL e produzir relatórios incrementais, evitando o reprocessamento desnecessário de dados já analisados.
   3. RF-003 — Consulta por calendário:
       - O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
@@ -89,12 +89,34 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
       - O período padrão deve ser de 90 dias, após o qual os relatórios e índices relacionados poderão ser removidos automaticamente.
 
 - **Requisitos Não-Funcionais (RNF)**:
-  1. Desempenho: Os relatórios devem ser gerados de forma incremental, otimizando tempo e consumo de recursos.
-  2. Usabilidade: Interface intuitiva, responsiva e visualmente clara, com navegação simplificada.
-  3. Segurança: Acesso restrito à rede corporativa da WEG e autenticação via LDAP.
-  4. Escalabilidade: Suporte à análise simultânea de múltiplas instâncias PostgreSQL.
-  5. Disponibilidade: Operação contínua com logs processados em background via agendamentos (cron jobs).
-  6. Compatibilidade: Integração com PostgreSQL V14+.
+  1. RNF-001 — Desempenho:
+      - O processamento dos logs deve ocorrer de forma incremental, reduzindo o tempo de execução e o consumo de recursos.
+      - A aplicação deve evitar o reprocessamento completo dos arquivos sempre que houver apenas novos registros.
+  2. RNF-002 — Usabilidade:
+      - A interface deve ser intuitiva, responsiva e visualmente clara.
+      - A navegação deve permitir que o usuário localize ambientes, servidores, períodos e relatórios sem precisar acessar diretamente os arquivos de log.
+  3. RNF-003 — Segurança:
+      - O acesso deve ser restrito à rede corporativa da WEG ou aos meios de conexão autorizados pela organização.
+      - O sistema deve exigir autenticação para acesso aos relatórios.
+      - Informações sensíveis presentes nos logs devem ser mascaradas sempre que aplicável.
+      - Credenciais e segredos não devem ser armazenados diretamente no código-fonte.
+  4. RNF-004 — Escalabilidade:
+      - O sistema deve permitir a inclusão de novas instâncias PostgreSQL sem exigir alterações significativas na arquitetura.
+      - O processamento de uma instância não deve impedir a geração de relatórios das demais.
+  5. RNF-005 — Disponibilidade:
+      - As rotinas de coleta, processamento e transferência devem ser executadas automaticamente em segundo plano.
+      - Falhas de processamento devem ser registradas para permitir diagnóstico e reexecução.
+      - As rotinas podem ser controladas por ferramentas de agendamento e orquestração, como Airflow, cron ou systemd, conforme a arquitetura adotada.
+  6. RNF-006 — Compatibilidade
+      - O sistema deve ser compatível com instâncias PostgreSQL 14 ou superiores, considerando as versões homologadas e testadas durante o projeto.
+      - A compatibilidade deve considerar também o formato e as configurações dos logs utilizados pelo pgBadger.
+  7. RNF-007 — Manutenibilidade:
+      - Os scripts, configurações e componentes da aplicação devem ser versionados.
+      - O código deve ser organizado de forma modular, facilitando correções e inclusão de novas funcionalidades.
+      - As configurações específicas de cada ambiente devem ser mantidas separadas da lógica principal da aplicação.
+  8. RNF-008 — Rastreabilidade:
+      - As rotinas automatizadas devem registrar informações sobre início, término, duração, sucesso e falha das execuções.
+      - Os registros devem permitir a identificação da instância, do período e do relatório processado.
 
 - **Aderência aos Requisitos da Linha de Projeto**: O PGReports é uma aplicação Web que atende aos critérios obrigatórios desta linha de projeto:
   - Indexes dos reports desenvolvidos em HTML5, CSS3 e JavaScript (frontend).
