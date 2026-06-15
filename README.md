@@ -13,9 +13,9 @@
 O PGReports é uma aplicação web desenvolvida para auxiliar na análise de logs e métricas de desempenho de instâncias PostgreSQL dentro dos ambientes corporativos da WEG. O sistema centraliza e transforma dados complexos de logs em informações acessíveis, permitindo que DBAs e analistas identifiquem rapidamente gargalos, queries custosas e comportamentos atípicos. O projeto destaca-se por sua abordagem direta ao log cru *(raw log)*, possibilitando avaliações profundas e diagnósticos mais precisos. A aplicação visa otimizar o tempo de análise e aumentar a eficiência das equipes técnicas, tornando o processo de identificação e resolução de problemas mais ágil, visual e confiável.
 
 ## 1. Introdução
-- **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de SAP BASIS (SAP Business Application Software Integrated Solution), suporte de infraestrutura e para auxiliar os colaboradores responsáveis por _databases_ que estejam ligadas à aplicações.
+- **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de SAP BASIS (SAP Business Application Software Integrated Solution), suporte de infraestrutura e para auxiliar os colaboradores responsáveis por _bancos de dados_ que estejam ligadas à aplicações.
   
-- **Justificativa**: Com a alta demanda de instâncias e bancos de dados PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _environments_.
+- **Justificativa**: Com a alta demanda de instâncias PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes _bancos de dados_.
   
 - **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por *databases* para identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
 
@@ -54,14 +54,39 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 ### 3.1. Requisitos de Software
 - **Requisitos Funcionais (RF)**:
-  1. Os reports devem ser gerados e exibidos de forma D-1 (disponível após um dia).
-  2. O sistema deve processar logs brutos (raw logs) do PostgreSQL e gerar relatórios incrementais.
-  3. O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
-  4. O sistema deve exibir categorias separadas por tipos de evento (erro, checkpoint, vacuum, lock).
-  5. O sistema deve exibir métricas de desempenho em dashboards visuais, incluindo tempo médio de execução, queries mais custosas e sessões ativas.
-  6. O usuário deve poder baixar os gráficos dos relatórios em formato PNG.
-  7. O sistema deve permitir o controle de acesso autenticado (login interno via LDAP corporativo).
-  8. O administrador deve poder configurar o ciclo de retenção dos relatórios (lifetime de 3 meses).
+  1. RF-001 — Geração de relatórios D-1:
+      - O sistema deve gerar e disponibilizar os relatórios no modelo D-1, permitindo que os dados de um determinado dia sejam consultados a partir do dia seguinte.
+  2. RF-002 — Processamento incremental
+      - O sistema deve processar os logs brutos gerados pelas instâncias PostgreSQL e produzir relatórios incrementais, evitando o reprocessamento desnecessário de dados já analisados.
+  3. RF-003 — Consulta por calendário:
+      - O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
+      - O calendário deve apresentar somente datas e períodos que possuam relatórios disponíveis.
+  4. RF-004 — Classificação de eventos:
+      - O sistema deve organizar e exibir os dados de acordo com categorias de eventos, incluindo:
+        - erros;
+        - checkpoints;
+        - vacuums;
+        - locks;
+        - sessões;
+        - tipos de queries;
+        - demais eventos identificados nos logs.
+  5. RF-005 — Dashboards e métricas:
+      - O sistema deve exibir métricas e informações de desempenho em dashboards visuais.Entre as informações apresentadas devem estar:
+        - tempo de execução das queries;
+        - quantidade de execuções;
+        - queries mais demoradas;
+        - queries que mais consumiram tempo;
+        - sessões identificadas;
+        - eventos e períodos de maior atividade.
+  6. RF-006 — Exportação de gráficos:
+      - O usuário deve poder exportar ou baixar os gráficos disponibilizados nos relatórios em formato PNG.
+  7. RF-007 — Controle de acesso:
+      - O sistema deve restringir o acesso a usuários internos autenticados.
+A autenticação deve utilizar o serviço corporativo definido para o projeto, como LDAP, Active Directory ou Keycloak.
+      - As funcionalidades administrativas devem ser disponibilizadas somente para usuários autorizados.
+  8. RF-008 — Retenção de relatórios:
+      - O sistema deve permitir a configuração do período de retenção dos relatórios.
+      - O período padrão deve ser de 90 dias, após o qual os relatórios e índices relacionados poderão ser removidos automaticamente.
 
 - **Requisitos Não-Funcionais (RNF)**:
   1. Desempenho: Os relatórios devem ser gerados de forma incremental, otimizando tempo e consumo de recursos.
@@ -80,8 +105,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 ### 3.2. Considerações de Design
 - **Visão Inicial da Arquitetura**: A arquitetura do PGReports é dividida em quatro camadas principais:
-  1. Coleta: Captura dos logs do PostgreSQL via pgBadger incremental.
-  2. Processamento: Parser dos logs e estruturação dos dados em formato legível.
+  1. Coleta: As instâncias PostgreSQL geram os logs técnicos, atuando com os scripts e rotinas automatizadas que transferem os arquivos para o processamento. 
+  2. Processamento: Parser dos logs (pgBadger) e estruturação dos dados em formato legível.
   3. Armazenamento: Organização dos relatórios em diretórios estruturados por data (ano/mês/semana/dia).
   4. Apresentação: Exibição dos resultados em uma interface web responsiva com gráficos dinâmicos e interativos.
     
