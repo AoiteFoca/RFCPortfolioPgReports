@@ -419,55 +419,285 @@ O desenvolvimento e a operação do PGReports seguem rigorosamente as normas e l
     - O acesso é controlado via autenticação corporativa (LDAP/AD).
     - Todas as comunicações e permissões são auditáveis e alinhadas com as diretrizes de conformidade interna da empresa.
    
-## 4. Próximos Passos
-Após a conclusão deste documento, o projeto PgReports seguirá para as etapas de desenvolvimento, validação e aprimoramento contínuo, alinhadas às entregas previstas para Portfólio I e II.
-1. Validação Técnica (Novembro/2025)
-    - Testes internos de coleta e parsing incremental de logs.
-    - Ajustes de desempenho e consistência no processamento via pgBadger.
-    - Avaliação da interface inicial e revisão de usabilidade.
+## 4. Evolução do Projeto e Próximos Passos
 
-2. Desenvolvimento de Funcionalidades-Chave (Dezembro/2025 a Janeiro/2026)
-    - Testes com módulos Overview, Top Queries, etc.
-    - Integração com autenticação corporativa (LDAP) e controle de acesso (Keycloak).
-    - Aplicação de padrões visuais.
+O desenvolvimento do PGReports foi realizado de forma incremental, passando pelas etapas de validação técnica, implementação das funcionalidades principais, aprimoramento da interface, automação das rotinas, integração com os serviços utilizados e validação do funcionamento da solução.
 
-3. Aprimoramento da Interface e Experiência do Usuário (Fevereiro/2026)
-    - Criação de dashboards interativos e filtros dinâmicos.
-    - Inclusão de indicadores de performance e métricas visuais.
-    - Adição de exportação dos gráficos dos relatórios.
+As atividades previstas no planejamento inicial foram concluídas, resultando em uma aplicação funcional para geração, armazenamento e visualização de relatórios de ambientes PostgreSQL.
 
-4. Testes de Escalabilidade e Segurança (Março/2026)
-    - Testes de carga em múltiplas instâncias PostgreSQL.
-    - Validação de autenticação e comunicação segura.
-    - Revisão de logs e políticas de retenção (lifetime de 3 meses).
+### 4.1. Entregas Concluídas
 
-5. Implantação Interna e Coleta de Feedback (Abril/2026)
-    - Disponibilização do PGReports para equipes de Suporte, BASIS e DBAs da WEG.
-    - Coleta de feedback e métricas de uso real.
-    - Planejamento de melhorias e roadmap para nova versão.
+As seguintes atividades foram implementadas durante o desenvolvimento do projeto:
 
-6. Automações (Maio/2026)
-    - Criar rotina de limpeza para reports no servidor Linux.
-    - Aplicar limpeza no Bucket para o Index principal.
+- Processamento incremental dos logs PostgreSQL com o pgBadger;
+- Geração e disponibilização dos relatórios no modelo D-1;
+- Organização dos relatórios por ambiente, servidor e período;
+- Implementação da navegação por calendário;
+- Desenvolvimento dos módulos de visualização, incluindo:
+  - Overview;
+  - Top Queries;
+  - Events;
+  - Sessions;
+  - Locks;
+  - Checkpoints;
+  - Vacuums;
+- Exibição de queries mais executadas, mais demoradas e com maior consumo de recursos;
+- Implementação de dashboards, gráficos, tabelas e filtros dinâmicos;
+- Desenvolvimento da interface web com TypeScript;
+- Utilização de scripts Python e Bash nas rotinas de processamento e automação;
+- Integração das rotinas com o Apache Airflow;
+- Transferência e armazenamento dos relatórios no MinIO S3;
+- Implementação de conexões e transferências seguras por SSH;
+- Organização dos arquivos e índices no bucket por ambiente, servidor e data;
+- Implementação das rotinas de limpeza no servidor Linux;
+- Aplicação da política de retenção e descarte dos relatórios;
+- Tratamento de arquivos ausentes, incompletos ou inválidos;
+- Registro das execuções, sucessos e falhas das rotinas automatizadas;
+- Ajustes no horário de execução e no tempo de transferência dos arquivos;
+- Aplicação de mascaramento em informações sensíveis encontradas nos logs;
+- Implementação do controle de acesso corporativo;
+- Validação da aplicação com os usuários envolvidos;
+- Ajustes de usabilidade e padronização visual;
+- Elaboração da documentação técnica e dos diagramas do Modelo C4;
+- Revisão dos requisitos funcionais e não funcionais;
+- Preparação da aplicação e da documentação para a entrega final do projeto.
 
-7. Melhorias (Junho/2026 a Julho/2026)
-    - Ajustar modelo de export de arquivos.
-    - Alterar extensão de arquivos.
-    - Reduzir tempo de transferência.
-    - Avaliar melhor horário para execução.
-    - Ajustes na interface Typescript (Opcional).
-    - Ajustes nos scripts Python.
-    - Planejamento de melhorias e roadmap para nova versão.
+### 4.2. Marcos Concluídos
 
-| **Marco** | **Descrição**                                      | **Data Estimada** |
-| --------- | -------------------------------------------------- | ----------------- |
-| M1        | Documento de Especificação Técnica finalizado      | 30/11/2025        |
-| M2        | Protótipo funcional do parser e dashboard básico   | 15/12/2025        |
-| M3        | Integração completa com PostgreSQL e autenticação  | 30/01/2026        |
-| M4        | Testes de desempenho e segurança                   | 15/03/2026        |
-| M5        | Implantação interna e validação com usuários reais | 10/04/2026        |
-| M6        | Automação de limpezas e melhorias na aplicação     | 10/05/2026        |
-| M7        | Entrega final Portfólio II                         | 10/07/2026        |
+| **Marco** | **Descrição**                                           | **Data Planejada** | **Status** |
+| --------- | ------------------------------------------------------- | -----------------: | ---------- |
+| **M1**    | Documento inicial de especificação técnica              |         30/11/2025 | Concluído  |
+| **M2**    | Protótipo funcional do parser e dashboard básico        |         15/12/2025 | Concluído  |
+| **M3**    | Integração com PostgreSQL, armazenamento e autenticação |         30/01/2026 | Concluído  |
+| **M4**    | Testes de desempenho, resiliência e segurança           |         15/03/2026 | Concluído  |
+| **M5**    | Implantação interna e validação com usuários            |         10/04/2026 | Concluído  |
+| **M6**    | Automação das rotinas de limpeza e manutenção           |         10/05/2026 | Concluído  |
+| **M7**    | Consolidação da documentação e entrega do Portfólio II  |         24/06/2026 | Pendente  |
+
+### 4.3. Estado Atual da Solução
+
+O PGReports encontra-se em estado funcional, com as principais rotinas de coleta, processamento, armazenamento e apresentação dos relatórios implementadas, já obtendo resultados positivos em avaliações internas da empresa.
+
+Atualmente, o sistema permite que os usuários consultem informações técnicas dos ambientes PostgreSQL sem precisar analisar diretamente arquivos extensos de log. A aplicação centraliza os relatórios, organiza os dados por período e apresenta informações relevantes por meio de dashboards e visualizações específicas.
+
+O projeto atende ao objetivo inicial de reduzir o esforço necessário para análise dos ambientes e facilitar a identificação de queries custosas, eventos, bloqueios, sessões e comportamentos atípicos.
+
+### 4.4. Planos para o futuro — Integração com um Agente de Inteligência Artificial
+
+Como evolução futura do PGReports, propõe-se a integração de um agente de inteligência artificial capaz de analisar automaticamente os relatórios gerados pela aplicação.
+
+O agente atuaria como uma camada adicional de apoio à análise técnica, utilizando as informações já processadas pelo PGReports para identificar comportamentos relevantes e apresentar conclusões de forma mais direta aos usuários.
+
+#### Objetivos do Agente de Inteligência Artificial
+
+- Analisar automaticamente os relatórios gerados pelo PGReports;
+- Identificar padrões de comportamento nas instâncias PostgreSQL;
+- Detectar possíveis anomalias e situações atípicas;
+- Apontar queries com alto custo, longa duração ou grande quantidade de execuções;
+- Identificar aumento incomum de erros, locks, vacuums ou checkpoints;
+- Comparar o comportamento atual com períodos anteriores;
+- Gerar resumos técnicos sobre o estado das instâncias;
+- Destacar possíveis gargalos de desempenho;
+- Sugerir pontos que devem ser investigados pelos responsáveis;
+- Gerar alertas quando determinados limites ou comportamentos forem identificados.
+
+#### Possíveis Funcionalidades
+
+O agente poderá oferecer funcionalidades como:
+
+- **Resumo diário do ambiente**:
+  - Apresentação dos principais eventos encontrados no relatório D-1;
+  - Destaque das queries mais impactantes;
+  - Identificação de horários de maior atividade;
+  - Resumo de erros, locks e eventos relevantes.
+
+- **Detecção de anomalias**:
+  - Identificação de variações fora do padrão histórico;
+  - Comparação com dias ou semanas anteriores;
+  - Detecção de crescimento inesperado no tempo de execução das queries;
+  - Identificação de aumento no número de erros ou bloqueios.
+
+- **Classificação de criticidade**:
+  - Classificação dos eventos em níveis como:
+    - Informativo;
+    - Atenção;
+    - Alerta;
+    - Crítico.
+
+- **Geração de alertas**:
+  - Envio de notificações para os responsáveis;
+  - Alertas sobre queries com comportamento anormal;
+  - Alertas sobre falhas no processamento dos relatórios;
+  - Alertas sobre indisponibilidade ou ausência de dados;
+  - Alertas sobre crescimento inesperado do consumo de recursos.
+
+- **Explicação dos resultados**:
+  - Tradução de informações técnicas para uma linguagem mais clara;
+  - Explicação do motivo pelo qual determinada query ou evento foi destacado;
+  - Apresentação dos dados utilizados para gerar cada alerta;
+  - Indicação de quais informações devem ser verificadas pelo analista.
+
+- **Assistente de consulta**:
+  - Permitir que o usuário faça perguntas sobre os relatórios;
+  - Responder questões como:
+    - “Quais foram as queries mais custosas desta semana?”;
+    - “Houve aumento no número de locks?”;
+    - “Qual ambiente apresentou mais erros?”;
+    - “Quais eventos devem ser investigados primeiro?”;
+    - “O comportamento atual está diferente da semana anterior?”.
+
+### 4.5. Fluxo Proposto para o Agente de IA
+
+O fluxo de funcionamento poderá seguir a seguinte estrutura:
+
+```text
+Instâncias PostgreSQL
+        ↓
+Logs técnicos
+        ↓
+Processamento com pgBadger
+        ↓
+Relatórios e índices
+        ↓
+Armazenamento no MinIO S3
+        ↓
+PGReports
+        ↓
+Agente de Inteligência Artificial
+        ↓
+Resumos, alertas e possíveis gargalos
+        ↓
+DBAs, analistas BASIS e responsáveis pelos ambientes
+```
+
+### 4.6. Arquitetura Inicial Proposta
+
+A integração poderá ser dividida nos seguintes componentes:
+
+| **Componente**                   | **Responsabilidade**                                               |
+| -------------------------------- | ------------------------------------------------------------------ |
+| **Coletor de Dados**             | Obtém do PGReports os dados necessários para análise.              |
+| **Normalizador**                 | Converte os relatórios em uma estrutura padronizada para o agente. |
+| **Motor de Regras**              | Valida limites e condições previamente definidos pelos DBAs.       |
+| **Detector de Anomalias**        | Compara métricas atuais com o histórico do ambiente.               |
+| **Agente de IA**                 | Interpreta os resultados e gera resumos técnicos.                  |
+| **Classificador de Criticidade** | Define a prioridade dos eventos identificados.                     |
+| **Gerenciador de Alertas**       | Envia as notificações aos responsáveis.                            |
+| **Interface de Consulta**        | Permite perguntas em linguagem natural sobre os relatórios.        |
+| **Módulo de Auditoria**          | Registra as análises, respostas e alertas gerados.                 |
+
+### 4.7. Etapas Futuras de Implementação
+
+#### Etapa 1 — Preparação dos Dados
+
+- Definir quais informações dos relatórios serão enviadas ao agente;
+- Criar uma estrutura padronizada de dados;
+- Remover ou mascarar informações sensíveis;
+- Selecionar as métricas mais relevantes;
+- Organizar uma base histórica por ambiente e período.
+
+#### Etapa 2 — Regras e Limites
+
+- Definir limites de duração, quantidade de execuções e criticidade;
+- Criar regras iniciais para identificação de possíveis gargalos;
+- Definir quais eventos devem gerar alertas;
+- Validar as regras com DBAs e analistas;
+- Permitir configurações diferentes para cada ambiente.
+
+#### Etapa 3 — Resumos Automáticos
+
+- Gerar resumos diários e semanais;
+- Apresentar os principais eventos identificados;
+- Destacar diferenças em relação aos períodos anteriores;
+- Exibir os dados que fundamentaram cada conclusão;
+- Permitir que o usuário acesse o relatório original.
+
+#### Etapa 4 — Detecção de Anomalias
+
+- Criar uma linha de base histórica para cada ambiente;
+- Comparar o comportamento atual com o histórico;
+- Identificar variações estatisticamente relevantes;
+- Reduzir alertas falsos;
+- Ajustar os critérios com base no feedback dos usuários.
+
+#### Etapa 5 — Alertas
+
+- Definir os canais de notificação;
+- Criar níveis de criticidade;
+- Evitar alertas repetitivos;
+- Registrar o envio e o recebimento das notificações;
+- Permitir que o analista confirme ou descarte um alerta.
+
+#### Etapa 6 — Assistente de Consulta
+
+- Permitir perguntas em linguagem natural;
+- Limitar as respostas aos dados autorizados;
+- Exibir as fontes utilizadas na resposta;
+- Registrar as consultas realizadas;
+- Aplicar controle de acesso conforme o ambiente consultado.
+
+### 4.8. Segurança e Governança do Agente
+
+A integração com inteligência artificial deverá respeitar os mesmos princípios de segurança aplicados ao PGReports.
+
+Entre os principais cuidados estão:
+
+- Não enviar logs brutos ou informações corporativas para serviços externos sem autorização;
+- Mascarar informações sensíveis dos bancos e sessões;
+- Aplicar controle de acesso aos resumos e alertas;
+- Restringir cada usuário aos ambientes para os quais possui permissão;
+- Registrar as análises e respostas produzidas;
+- Informar quando uma conclusão foi gerada pela inteligência artificial;
+- Manter os dados utilizados como evidência da análise;
+- Evitar que o agente execute alterações diretamente nas instâncias PostgreSQL;
+- Exigir validação humana antes de qualquer ação operacional;
+- Aplicar políticas de retenção para prompts, respostas e dados processados;
+- Avaliar o uso de modelos executados em ambiente interno ou corporativo.
+
+### 4.9. Supervisão Humana
+
+O agente de inteligência artificial deverá atuar como uma ferramenta de apoio, e não como substituto do DBA ou do analista responsável.
+
+As conclusões apresentadas deverão ser interpretadas como recomendações ou pontos de investigação. A decisão final sobre ajustes, correções, encerramento de sessões ou alterações nos ambientes continuará sendo responsabilidade dos profissionais autorizados.
+
+O agente não deverá:
+
+- Executar queries administrativas;
+- Alterar configurações do PostgreSQL;
+- Encerrar sessões automaticamente;
+- Aplicar recomendações sem aprovação;
+- Expor informações de ambientes não autorizados;
+- Apresentar uma hipótese como causa confirmada sem evidências suficientes.
+
+### 4.10. Resultados Esperados da Evolução
+
+Com a integração do agente de inteligência artificial, espera-se:
+
+- Reduzir ainda mais o tempo necessário para interpretar os relatórios;
+- Facilitar a priorização dos eventos mais importantes;
+- Identificar comportamentos atípicos de forma antecipada;
+- Diminuir o esforço manual de comparação entre períodos;
+- Gerar resumos técnicos de forma automática;
+- Melhorar a comunicação entre DBAs, analistas e responsáveis pelas aplicações;
+- Aumentar a capacidade preventiva da solução;
+- Apoiar a tomada de decisão com informações organizadas e contextualizadas;
+- Manter histórico dos alertas e comportamentos identificados;
+- Evoluir o PGReports de uma ferramenta de visualização para uma plataforma de apoio inteligente ao diagnóstico.
+
+### 4.11. Roadmap Futuro
+
+| **Marco Futuro** | **Descrição**                                       | **Prioridade** | **Status** |
+| ---------------- | --------------------------------------------------- | -------------: | -------------- |
+| **F1**           | Padronização dos dados para análise do agente       |           Alta | Para Planejar  |
+| **F2**           | Implementação do motor inicial de regras            |           Alta | Para Planejar  |
+| **F3**           | Geração automática de resumos diários               |           Alta | Para Planejar  |
+| **F4**           | Classificação de eventos por criticidade            |           Alta | Para Planejar  |
+| **F5**           | Detecção de anomalias com base no histórico         |          Média | Para Planejar  |
+| **F6**           | Envio de alertas para os responsáveis               |          Média | Para Planejar  |
+| **F7**           | Assistente de consulta em linguagem natural         |          Média | Para Planejar  |
+| **F8**           | Avaliação de modelos executados em ambiente interno |           Alta | Para Planejar  |
+| **F9**           | Validação do agente com DBAs e analistas            |           Alta | Para Planejar  |
+| **F10**          | Auditoria e acompanhamento da precisão das análises |           Alta | Para Planejar  |
 
 ## 5. Referências
 POSTGRESQL GLOBAL DEVELOPMENT GROUP. PostgreSQL Documentation (v14–17).
