@@ -342,24 +342,24 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
     
 
 - **Licenciamento**:
-  - Projeto PgReports: 
-    - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
-  - Dependências:
-      | **Dependência / Ferramenta**              | **Licença**        |
-      | ----------------------------------------- | -------------------|
-      | **Python 3**                              | PSF License        |
-      | **Jinja2**                                | BSD 3-Clause       |
-      | **pgBadger**                              | PostgreSQL License |
-      | **PostgreSQL**                            | PostgreSQL License |
-      | **boto3 / botocore**                      | Apache License 2.0 |
-      | **paramiko**                              | LGPL 2.1           |
-      | **airflow.providers.ssh**                 | Apache License 2.0 |
-      | **re / os / stat / datetime / timedelta** | PSF License        |
-      | **Chart.js / Plotly**                     | MIT License        |
-      | **Git / GitLab / GitHub**                 | MIT License        |
-      | **VS Code**                               | MIT License        |
-      | **Shell Script / Bash**                   | GNU GPL v3         |
-      | **Cron / Systemd**                        | GPL v2             |
+  - Caso o projeto fosse externo a WEG, encaixaria em MIT (permissiva) para reuso interno/acadêmico. Porém, como o repositório é corporativo, o licenciamento é direcionado ao colaborador responsável e padronizado com a WEG.
+
+- **Dependências**:
+    | **Dependência / Ferramenta**              | **Licença**        |
+    | ----------------------------------------- | -------------------|
+    | **Python 3**                              | PSF License        |
+    | **Jinja2**                                | BSD 3-Clause       |
+    | **pgBadger**                              | PostgreSQL License |
+    | **PostgreSQL**                            | PostgreSQL License |
+    | **boto3 / botocore**                      | Apache License 2.0 |
+    | **paramiko**                              | LGPL 2.1           |
+    | **airflow.providers.ssh**                 | Apache License 2.0 |
+    | **re / os / stat / datetime / timedelta** | PSF License        |
+    | **Chart.js / Plotly**                     | MIT License        |
+    | **Git / GitLab / GitHub**                 | MIT License        |
+    | **VS Code**                               | MIT License        |
+    | **Shell Script / Bash**                   | GNU GPL v3         |
+    | **Cron / Systemd**                        | GPL v2             |
 
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
