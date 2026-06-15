@@ -275,12 +275,26 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
   - A escolha pelo desenvolvimento de uma solução própria também permite maior controle sobre os filtros, a retenção dos relatórios, a inclusão de novas instâncias e a evolução das funcionalidades conforme as necessidades internas.
 
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
-    - Escalabilidade: Além do processamento incremental dos reports, as configurações de inclusão do projeto permitem adicionar novas instâncias sem afetar o desempenho da aplicação.
-    - Resiliência: Logs corrompidos ou incompletos são ignorados automaticamente, mantendo a integridade dos relatórios.
-    - Segurança:
-        - Acesso restrito à rede corporativa (VPN interna).
-        - Autenticação via LDAP.
-        - Políticas de retenção e descarte automático após 90 dias.
+
+  - Escalabilidade:
+    - O processamento incremental reduz a necessidade de reprocessar completamente os logs já analisados;
+    - A inclusão de novas instâncias deve ocorrer por meio de configurações padronizadas, evitando alterações significativas no código principal;
+    - As rotinas devem permitir que os ambientes sejam processados de forma independente, reduzindo o impacto de uma instância sobre as demais;
+    - A capacidade máxima de processamento deverá ser validada por meio de testes de carga e acompanhamento do tempo de execução das rotinas.
+  - Resiliência:
+    - Uma falha no processamento de determinada instância não deve interromper a geração dos relatórios das demais;
+    - Arquivos ausentes, incompletos ou incompatíveis devem ser registrados e tratados de forma controlada;
+    - As rotinas automatizadas devem registrar informações de início, término, sucesso e falha;
+    - O sistema deve permitir a reexecução de uma rotina quando ocorrer uma falha durante a coleta, o processamento ou a transferência;
+    - Relatórios inválidos ou incompletos não devem substituir arquivos anteriormente gerados e considerados válidos.
+  - Segurança:
+    - O acesso ao PGReports deve permanecer restrito à rede corporativa da WEG ou aos meios de conexão autorizados, como a VPN interna;
+    - A aplicação deve exigir autenticação corporativa e verificar as permissões de acesso de cada usuário;
+    - As credenciais, chaves e demais segredos utilizados pela aplicação não devem ser armazenados diretamente no código-fonte;
+    - Informações sensíveis encontradas nos logs devem ser mascaradas ou removidas sempre que aplicável;
+    - Os usuários e processos do sistema devem possuir somente as permissões necessárias para executar suas funções;
+    - Os relatórios e índices devem ser removidos automaticamente após o período de retenção definido, atualmente estabelecido em 90 dias;
+    - Os acessos, erros e operações relevantes devem ser registrados para possibilitar auditoria e rastreabilidade.
 
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação**:
