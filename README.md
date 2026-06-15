@@ -318,7 +318,6 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 | **re**                           | Aplicação de expressões regulares para filtragem, validação e mascaramento de informações.                           | Biblioteca padrão Python |
 | **os**                           | Manipulação de diretórios, arquivos, variáveis de ambiente e operações do sistema.                                   | Biblioteca padrão Python |
 | **stat**                         | Controle e consulta de permissões e atributos de arquivos.                                                           | Biblioteca padrão Python |
-|
 
 - **Plataformas e Infraestrutura**:
 
@@ -330,7 +329,6 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 | **Cron / systemd**                     | Execução de rotinas locais e tarefas periódicas no sistema operacional, quando aplicável.          |
 | **GitLab CI/CD**                       | Automação dos processos de integração, validação e implantação do projeto.                         |
 | **LDAP / Active Directory / Keycloak** | Autenticação e controle de acesso dos usuários internos, conforme a arquitetura adotada.           |
-|
 
 - **Ferramentas de Desenvolvimento e Gestão**:
 
@@ -341,7 +339,6 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 | **GitLab**             | Hospedagem do repositório, colaboração e execução dos pipelines de CI/CD.             |
 | **Jira**               | Organização das atividades, tarefas, melhorias e correções do projeto.                |
 | **Grafana**            | Apoio à observabilidade dos servidores, serviços e rotinas relacionadas ao PGReports. |
-|
     
 
 - **Licenciamento**:
@@ -363,7 +360,6 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
       | **VS Code**                               | MIT License        |
       | **Shell Script / Bash**                   | GNU GPL v3         |
       | **Cron / Systemd**                        | GPL v2             |
-      |
 
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
