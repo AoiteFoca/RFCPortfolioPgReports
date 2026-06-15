@@ -122,7 +122,6 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
   - Indexes dos reports desenvolvidos em HTML5, CSS3 e JavaScript (frontend).
   - Interface da aplicação desenvolvida em Typescript.
   - Utilização de scripts Python durante o seu ciclo.
-  - Integração com banco de dados PostgreSQL.
   - Geração de relatórios e visualizações dinâmicas (componentes web responsivos).
 
 ### 3.2. Considerações de Design
@@ -270,8 +269,10 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 ![Dashboard Top Queries](./images/mock/reportslongquery.png)
 
 - **Decisões e Alternativas Consideradas**:
-    - Inicialmente foi considerado o uso direto de ferramentas já implementadas na WEG, como Grafana e Splunk, mas ambas se mostraram superficiais para situações que solicitavam logs detalhados do PostgreSQL.
-    - Foi optado, então, por desenvolver o PGReports, garantindo personalização e independência para suprir a demanda da empresa WEG.
+  - Inicialmente, foi avaliada a utilização exclusiva de ferramentas já disponíveis na WEG, como Grafana e Splunk. Essas soluções continuam sendo importantes para monitoramento, observabilidade e centralização de informações. Entretanto, para o caso de uso do projeto, foi identificada a necessidade de uma visualização mais específica dos logs PostgreSQL, com relatórios organizados por ambiente, servidor e período.
+  - Também foi considerada a utilização isolada do pgBadger. Apesar de a ferramenta gerar relatórios detalhados a partir dos logs PostgreSQL, ainda seria necessário acessar e organizar manualmente os arquivos produzidos.
+  - Diante dessas limitações, optou-se pelo desenvolvimento do PGReports como uma solução complementar, capaz de centralizar os relatórios, aplicar uma organização adequada ao ambiente interno e disponibilizar uma interface adaptada à rotina de DBAs, analistas BASIS e responsáveis por bancos de dados.
+  - A escolha pelo desenvolvimento de uma solução própria também permite maior controle sobre os filtros, a retenção dos relatórios, a inclusão de novas instâncias e a evolução das funcionalidades conforme as necessidades internas.
 
 - **Critérios de Escalabilidade, Resiliência e Segurança**:
     - Escalabilidade: Além do processamento incremental dos reports, as configurações de inclusão do projeto permitem adicionar novas instâncias sem afetar o desempenho da aplicação.
