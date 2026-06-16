@@ -13,7 +13,7 @@
 
 - [Capa](#capa)
 - [Resumo](#Resumo)
-- [1. Introdução](#1-Introdução)
+- [1. Introdução](#1.Introdução)
 - [2. Descrição do Projeto](#2-descricao-do-projeto)
 - [3. Especificação Técnica](#3-especificacao-tecnica)
   - [3.1. Requisitos de Software](#3-1-requisitos-de-software)
@@ -47,7 +47,7 @@
 # Resumo
 O PGReports é uma aplicação web desenvolvida para auxiliar na análise de logs e métricas de desempenho de instâncias PostgreSQL dentro dos ambientes corporativos da WEG. O sistema centraliza e transforma dados complexos de logs em informações acessíveis, permitindo que DBAs e analistas identifiquem rapidamente gargalos, queries custosas e comportamentos atípicos. O projeto destaca-se por sua abordagem direta ao _raw log_ (log puro e sem tratamento algum), possibilitando avaliações profundas e diagnósticos mais precisos. A aplicação visa otimizar o tempo de análise e aumentar a eficiência das equipes técnicas, tornando o processo de identificação e resolução de problemas mais ágil, visual e confiável.
 
-## 1-Introdução
+## 1.Introdução
 - **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de SAP BASIS (SAP Business Application Software Integrated Solution), suporte de infraestrutura e para auxiliar os colaboradores responsáveis por __databases__ que estejam ligadas à aplicações.
   
 - **Justificativa**: Com a alta demanda de instâncias PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes bancos de dados.
