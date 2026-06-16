@@ -2,6 +2,8 @@
     <img loading="lazy" src="https://files.engaged.com.br/5db0810e95b4f900077e887e/account/5db0810e95b4f900077e887e/xMCS8NFKTMqwhefy8WLd_catolica-horizontal.png" width="300">
 </p>
 
+<a id="capa"></a>
+
 # Capa
 - **Título do Projeto**: PGReports.
 - **Nome do Estudante**: Nathan Cielusinski.
@@ -11,11 +13,10 @@
 
 # Sumário
 
-- [Capa](#capa)
-- [Resumo](#Resumo)
-- [1. Introdução](#1-Introdução)
-- [2. Descrição do Projeto](#2-Descrição-do-Projeto)
-- [3. Especificação Técnica](#3-Especificação-Técnica)
+- [Resumo](#resumo)
+- [1. Introdução](#1-introducao)
+- [2. Descrição do Projeto](#2-descricao-do-projeto)
+- [3. Especificação Técnica](#3-especificacao-tecnica)
   - [3.1. Requisitos de Software](#3-1-requisitos-de-software)
   - [3.2. Considerações de Design](#3-2-consideracoes-de-design)
   - [3.3. Stack Tecnológica](#3-3-stack-tecnologica)
@@ -44,8 +45,14 @@
 - [5. Referências](#5-referencias)
 - [6. Avaliações de Professores](#6-avaliacoes-de-professores)
 
+---
+
+<a id="resumo"></a>
+
 # Resumo
 O PGReports é uma aplicação web desenvolvida para auxiliar na análise de logs e métricas de desempenho de instâncias PostgreSQL dentro dos ambientes corporativos da WEG. O sistema centraliza e transforma dados complexos de logs em informações acessíveis, permitindo que DBAs e analistas identifiquem rapidamente gargalos, queries custosas e comportamentos atípicos. O projeto destaca-se por sua abordagem direta ao _raw log_ (log puro e sem tratamento algum), possibilitando avaliações profundas e diagnósticos mais precisos. A aplicação visa otimizar o tempo de análise e aumentar a eficiência das equipes técnicas, tornando o processo de identificação e resolução de problemas mais ágil, visual e confiável.
+
+<a id="1-introducao"></a>
 
 ## 1. Introdução
 - **Contexto**: A aplicação PGReports foi desenvolvida para suprir uma necessidade interna da empresa WEG nas áreas de SAP BASIS (SAP Business Application Software Integrated Solution), suporte de infraestrutura e para auxiliar os colaboradores responsáveis por __databases__ que estejam ligadas à aplicações.
@@ -53,6 +60,8 @@ O PGReports é uma aplicação web desenvolvida para auxiliar na análise de log
 - **Justificativa**: Com a alta demanda de instâncias PostgreSQL surgindo, foi identificado o crescimento abundante destes ambientes gerenciados pela TI. Considerando problemas que se tornavam muito custosos e trabalhosos para identificar uma resolução cabível, o PGReports foi pensado e desenvolvido para auxiliar na avaliação final e, rapidamente, identificar os problemas destes bancos de dados.
   
 - **Objetivos**: Facilitar a análise de DBAs, analistas e responsáveis por _databases_ para identificar problemas em instâncias e bancos de dados Postgres internos da WEG.
+
+<a id="2-descricao-do-projeto"></a>
 
 ## 2. Descrição do Projeto
 * **Linha de Projeto**: O PGReports é uma aplicação web disponibilizada na rede interna da empresa WEG.
@@ -84,8 +93,12 @@ O PGReports não coleta dados pessoais de usuários finais. Todos os logs proces
   - Maior rastreabilidade em ações de usuários dos bancos de dados PostgreSQL.
   - Adoção interna crescente e feedback positivo dos usuários.
 
+<a id="3-especificacao-tecnica"></a>
+
 ## 3. Especificação Técnica
 Considerando e assegurando a conformidade com boas práticas de desenvolvimento web e segurança corporativa, os requisitos, arquitetura, design e considerações técnicas do PGReports foram pensados da seguinte forma:
+
+<a id="3-1-requisitos-de-software"></a>
 
 ### 3.1. Requisitos de Software
 - **Requisitos Funcionais (RF)**:
@@ -158,6 +171,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
   - Interface da aplicação desenvolvida em Typescript;
   - Utilização de scripts Python durante o seu ciclo;
   - Geração de relatórios e visualizações dinâmicas (componentes web responsivos).
+
+<a id="3-2-consideracoes-de-design"></a>
 
 ### 3.2. Considerações de Design
 - **Visão Inicial da Arquitetura**: A arquitetura do PGReports é dividida em quatro camadas principais:
@@ -331,6 +346,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - Os relatórios e índices devem ser removidos automaticamente após o período de retenção definido, atualmente estabelecido em 90 dias;
     - Os acessos, erros e operações relevantes devem ser registrados para possibilitar auditoria e rastreabilidade.
 
+<a id="3-3-stack-tecnologica"></a>
+
 ### 3.3. Stack Tecnológica
 - **Linguagens de Programação e Marcações**:
   - **TypeScript**: Utilizado no desenvolvimento da interface web do PGReports, sendo responsável pela navegação, filtros, componentes visuais e interação do usuário com os relatórios;
@@ -396,6 +413,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     | **Shell Script / Bash**                   | GNU GPL v3         |
     | **Cron / Systemd**                        | GPL v2             |
 
+<a id="3-4-consideracoes-de-seguranca"></a>
+
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
     - Exposição de informações sensíveis em logs (strings de conexão, IPs internos, mensagens de erro detalhadas);
@@ -427,6 +446,8 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - **Uso responsável de dados e automações**: Auditoria de regras que destacam “gargalos” para evitar decisões errôneas e sempre com supervisão humana presente.
     - **Futuras extensões com IA**: Caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
 
+<a id="3-5-conformidade-e-normas-aplicaveis"></a>
+
 ### 3.5. Conformidade e Normas Aplicáveis
 O desenvolvimento e a operação do PGReports seguem rigorosamente as normas e legislações aplicáveis ao contexto de sistemas corporativos, com foco em segurança da informação, privacidade de dados e boas práticas de desenvolvimento de software.
 - **LGPD – Lei Geral de Proteção de Dados (Lei nº 13.709/2018)**:
@@ -454,11 +475,16 @@ O desenvolvimento e a operação do PGReports seguem rigorosamente as normas e l
     - O acesso é controlado via autenticação corporativa (LDAP/AD);
     - Todas as comunicações e permissões são auditáveis e alinhadas com as diretrizes de conformidade interna da empresa.
    
+
+<a id="4-evolucao-do-projeto-e-proximos-passos"></a>
+
 ## 4. Evolução do Projeto e Próximos Passos
 
 O desenvolvimento do PGReports foi realizado de forma incremental, passando pelas etapas de validação técnica, implementação das funcionalidades principais, aprimoramento da interface, automação das rotinas, integração com os serviços utilizados e validação do funcionamento da solução.
 
 As atividades previstas no planejamento inicial foram concluídas, resultando em uma aplicação funcional para geração, armazenamento e visualização de relatórios de ambientes PostgreSQL.
+
+<a id="4-1-entregas-concluidas"></a>
 
 ### 4.1. Entregas Concluídas
 
@@ -497,6 +523,8 @@ As seguintes atividades foram implementadas durante o desenvolvimento do projeto
 - Revisão dos requisitos funcionais e não funcionais;
 - Preparação da aplicação e da documentação para a entrega final do projeto.
 
+<a id="4-2-marcos-concluidos"></a>
+
 ### 4.2. Marcos Concluídos
 
 | **Marco** | **Descrição**                                           | **Data Planejada** | **Status** |
@@ -509,6 +537,8 @@ As seguintes atividades foram implementadas durante o desenvolvimento do projeto
 | **M6**    | Automação das rotinas de limpeza e manutenção           |         10/05/2026 | Concluído  |
 | **M7**    | Consolidação da documentação e entrega do Portfólio II  |         24/06/2026 | Pendente  |
 
+<a id="4-3-estado-atual-da-solucao"></a>
+
 ### 4.3. Estado Atual da Solução
 
 O PGReports encontra-se em estado funcional, com as principais rotinas de coleta, processamento, armazenamento e apresentação dos relatórios implementadas, já obtendo resultados positivos em avaliações internas da empresa.
@@ -517,11 +547,15 @@ Atualmente, o sistema permite que os usuários consultem informações técnicas
 
 O projeto atende ao objetivo inicial de reduzir o esforço necessário para análise dos ambientes e facilitar a identificação de queries custosas, eventos, bloqueios, sessões e comportamentos atípicos.
 
+<a id="4-4-planos-para-o-futuro-integracao-com-um-agente-de-inteligencia-artificial"></a>
+
 ### 4.4. Planos para o futuro — Integração com um Agente de Inteligência Artificial
 
 Como evolução futura do PGReports, propõe-se a integração de um agente de inteligência artificial capaz de analisar automaticamente os relatórios gerados pela aplicação.
 
 O agente atuaria como uma camada adicional de apoio à análise técnica, utilizando as informações já processadas pelo PGReports para identificar comportamentos relevantes e apresentar conclusões de forma mais direta aos usuários.
+
+<a id="objetivos-do-agente-de-inteligencia-artificial"></a>
 
 #### Objetivos do Agente de Inteligência Artificial
 
@@ -535,6 +569,8 @@ O agente atuaria como uma camada adicional de apoio à análise técnica, utiliz
 - Destacar possíveis gargalos de desempenho;
 - Sugerir pontos que devem ser investigados pelos responsáveis;
 - Gerar alertas quando determinados limites ou comportamentos forem identificados.
+
+<a id="possiveis-funcionalidades"></a>
 
 #### Possíveis Funcionalidades
 
@@ -581,6 +617,8 @@ O agente poderá oferecer funcionalidades como:
     - “Quais eventos devem ser investigados primeiro?”;
     - “O comportamento atual está diferente da semana anterior?”.
 
+<a id="4-5-fluxo-proposto-para-o-agente-de-ia"></a>
+
 ### 4.5. Fluxo Proposto para o Agente de IA
 
 O fluxo de funcionamento poderá seguir a seguinte estrutura:
@@ -605,6 +643,8 @@ Resumos, alertas e possíveis gargalos
 DBAs, analistas BASIS e responsáveis pelos ambientes
 ```
 
+<a id="4-6-arquitetura-inicial-proposta"></a>
+
 ### 4.6. Arquitetura Inicial Proposta
 
 A integração poderá ser dividida nos seguintes componentes:
@@ -621,7 +661,11 @@ A integração poderá ser dividida nos seguintes componentes:
 | **Interface de Consulta**        | Permite perguntas em linguagem natural sobre os relatórios.        |
 | **Módulo de Auditoria**          | Registra as análises, respostas e alertas gerados.                 |
 
+<a id="4-7-etapas-futuras-de-implementacao"></a>
+
 ### 4.7. Etapas Futuras de Implementação
+
+<a id="etapa-1-preparacao-dos-dados"></a>
 
 #### Etapa 1 — Preparação dos Dados
 
@@ -631,6 +675,8 @@ A integração poderá ser dividida nos seguintes componentes:
 - Selecionar as métricas mais relevantes;
 - Organizar uma base histórica por ambiente e período.
 
+<a id="etapa-2-regras-e-limites"></a>
+
 #### Etapa 2 — Regras e Limites
 
 - Definir limites de duração, quantidade de execuções e criticidade;
@@ -638,6 +684,8 @@ A integração poderá ser dividida nos seguintes componentes:
 - Definir quais eventos devem gerar alertas;
 - Validar as regras com DBAs e analistas;
 - Permitir configurações diferentes para cada ambiente.
+
+<a id="etapa-3-resumos-automaticos"></a>
 
 #### Etapa 3 — Resumos Automáticos
 
@@ -647,6 +695,8 @@ A integração poderá ser dividida nos seguintes componentes:
 - Exibir os dados que fundamentaram cada conclusão;
 - Permitir que o usuário acesse o relatório original.
 
+<a id="etapa-4-deteccao-de-anomalias"></a>
+
 #### Etapa 4 — Detecção de Anomalias
 
 - Criar uma linha de base histórica para cada ambiente;
@@ -654,6 +704,8 @@ A integração poderá ser dividida nos seguintes componentes:
 - Identificar variações estatisticamente relevantes;
 - Reduzir alertas falsos;
 - Ajustar os critérios com base no feedback dos usuários.
+
+<a id="etapa-5-alertas"></a>
 
 #### Etapa 5 — Alertas
 
@@ -663,6 +715,8 @@ A integração poderá ser dividida nos seguintes componentes:
 - Registrar o envio e o recebimento das notificações;
 - Permitir que o analista confirme ou descarte um alerta.
 
+<a id="etapa-6-assistente-de-consulta"></a>
+
 #### Etapa 6 — Assistente de Consulta
 
 - Permitir perguntas em linguagem natural;
@@ -670,6 +724,8 @@ A integração poderá ser dividida nos seguintes componentes:
 - Exibir as fontes utilizadas na resposta;
 - Registrar as consultas realizadas;
 - Aplicar controle de acesso conforme o ambiente consultado.
+
+<a id="4-8-seguranca-e-governanca-do-agente"></a>
 
 ### 4.8. Segurança e Governança do Agente
 
@@ -689,6 +745,8 @@ Entre os principais cuidados estão:
 - Aplicar políticas de retenção para prompts, respostas e dados processados;
 - Avaliar o uso de modelos executados em ambiente interno ou corporativo.
 
+<a id="4-9-supervisao-humana"></a>
+
 ### 4.9. Supervisão Humana
 
 O agente de inteligência artificial deverá atuar como uma ferramenta de apoio, e não como substituto do DBA ou do analista responsável.
@@ -703,6 +761,8 @@ O agente não deverá:
 - Aplicar recomendações sem aprovação;
 - Expor informações de ambientes não autorizados;
 - Apresentar uma hipótese como causa confirmada sem evidências suficientes.
+
+<a id="4-10-resultados-esperados-da-evolucao"></a>
 
 ### 4.10. Resultados Esperados da Evolução
 
@@ -719,6 +779,8 @@ Com a integração do agente de inteligência artificial, espera-se:
 - Manter histórico dos alertas e comportamentos identificados;
 - Evoluir o PGReports de uma ferramenta de visualização para uma plataforma de apoio inteligente ao diagnóstico.
 
+<a id="4-11-roadmap-futuro"></a>
+
 ### 4.11. Roadmap Futuro
 
 | **Marco Futuro** | **Descrição**                                       | **Prioridade** | **Status** |
@@ -733,6 +795,8 @@ Com a integração do agente de inteligência artificial, espera-se:
 | **F8**           | Avaliação de modelos executados em ambiente interno |           Alta | Para Planejar  |
 | **F9**           | Validação do agente com DBAs e analistas            |           Alta | Para Planejar  |
 | **F10**          | Auditoria e acompanhamento da precisão das análises |           Alta | Para Planejar  |
+
+<a id="5-referencias"></a>
 
 ## 5. Referências
 POSTGRESQL GLOBAL DEVELOPMENT GROUP. PostgreSQL Documentation (v14–17).
@@ -765,6 +829,8 @@ Disponível em: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13
 
 ISO. ISO/IEC 27001 – Information Security Management Systems.
 Disponível em: https://www.iso.org/isoiec-27001-information-security.html
+
+<a id="6-avaliacoes-de-professores"></a>
 
 ## 6. Avaliações de Professores
 Adicionar três páginas no final do RFC para que os Professores escolhidos possam fazer suas considerações e assinatura:
