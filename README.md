@@ -9,6 +9,41 @@
 - **Data de Entrega Inicial**: 30/11/2025.
 - **Data de Entrega Final:** 24/06/2026.
 
+# Sumário
+
+- [Capa](#capa)
+- [Resumo](#Resumo)
+- [1. Introdução](#1-introducao)
+- [2. Descrição do Projeto](#2-descricao-do-projeto)
+- [3. Especificação Técnica](#3-especificacao-tecnica)
+  - [3.1. Requisitos de Software](#3-1-requisitos-de-software)
+  - [3.2. Considerações de Design](#3-2-consideracoes-de-design)
+  - [3.3. Stack Tecnológica](#3-3-stack-tecnologica)
+  - [3.4. Considerações de Segurança](#3-4-consideracoes-de-seguranca)
+  - [3.5. Conformidade e Normas Aplicáveis](#3-5-conformidade-e-normas-aplicaveis)
+- [4. Evolução do Projeto e Próximos Passos](#4-evolucao-do-projeto-e-proximos-passos)
+  - [4.1. Entregas Concluídas](#4-1-entregas-concluidas)
+  - [4.2. Marcos Concluídos](#4-2-marcos-concluidos)
+  - [4.3. Estado Atual da Solução](#4-3-estado-atual-da-solucao)
+  - [4.4. Planos para o futuro — Integração com um Agente de Inteligência Artificial](#4-4-planos-para-o-futuro-integracao-com-um-agente-de-inteligencia-artificial)
+    - [Objetivos do Agente de Inteligência Artificial](#objetivos-do-agente-de-inteligencia-artificial)
+    - [Possíveis Funcionalidades](#possiveis-funcionalidades)
+  - [4.5. Fluxo Proposto para o Agente de IA](#4-5-fluxo-proposto-para-o-agente-de-ia)
+  - [4.6. Arquitetura Inicial Proposta](#4-6-arquitetura-inicial-proposta)
+  - [4.7. Etapas Futuras de Implementação](#4-7-etapas-futuras-de-implementacao)
+    - [Etapa 1 — Preparação dos Dados](#etapa-1-preparacao-dos-dados)
+    - [Etapa 2 — Regras e Limites](#etapa-2-regras-e-limites)
+    - [Etapa 3 — Resumos Automáticos](#etapa-3-resumos-automaticos)
+    - [Etapa 4 — Detecção de Anomalias](#etapa-4-deteccao-de-anomalias)
+    - [Etapa 5 — Alertas](#etapa-5-alertas)
+    - [Etapa 6 — Assistente de Consulta](#etapa-6-assistente-de-consulta)
+  - [4.8. Segurança e Governança do Agente](#4-8-seguranca-e-governanca-do-agente)
+  - [4.9. Supervisão Humana](#4-9-supervisao-humana)
+  - [4.10. Resultados Esperados da Evolução](#4-10-resultados-esperados-da-evolucao)
+  - [4.11. Roadmap Futuro](#4-11-roadmap-futuro)
+- [5. Referências](#5-referencias)
+- [6. Avaliações de Professores](#6-avaliacoes-de-professores)
+
 # Resumo
 O PGReports é uma aplicação web desenvolvida para auxiliar na análise de logs e métricas de desempenho de instâncias PostgreSQL dentro dos ambientes corporativos da WEG. O sistema centraliza e transforma dados complexos de logs em informações acessíveis, permitindo que DBAs e analistas identifiquem rapidamente gargalos, queries custosas e comportamentos atípicos. O projeto destaca-se por sua abordagem direta ao _raw log_ (log puro e sem tratamento algum), possibilitando avaliações profundas e diagnósticos mais precisos. A aplicação visa otimizar o tempo de análise e aumentar a eficiência das equipes técnicas, tornando o processo de identificação e resolução de problemas mais ágil, visual e confiável.
 
