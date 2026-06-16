@@ -363,11 +363,11 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 ### 3.4. Considerações de Segurança
 - **Riscos Identificados**: 
-    - Exposição de informações sensíveis em logs (strings de conexão, IPs internos, mensagens de erro detalhadas).
-    - Falhas de autenticação/autorização (acesso indevido a relatórios).
-    - Injeção (HTML Injection) via campos de filtro/consulta exibidos na UI.
-    - Command Injection em rotinas que manipulam caminhos/execuções de processos externos.
-    - DoS por carga excessiva (picos de logs ou consultas pesadas).
+    - Exposição de informações sensíveis em logs (strings de conexão, IPs internos, mensagens de erro detalhadas);
+    - Falhas de autenticação/autorização (acesso indevido a relatórios);
+    - Injeção (HTML Injection) via campos de filtro/consulta exibidos na UI;
+    - Command Injection em rotinas que manipulam caminhos/execuções de processos externos;
+    - DoS por carga excessiva (picos de logs ou consultas pesadas);
     - Configuração insegura (TLS ausente, segredos em variáveis expostas, permissões amplas no host).
     
 - **Medidas de Mitigação**:
@@ -382,41 +382,41 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
     - **Backups e recuperação:** Snapshots dos artefatos de relatório, indexes, servidores, instâncias e *databases*.
 
 - **Normas e Boas Práticas Seguidas**:
-    - OWASP: Diretrizes para prevenção de vulnerabilidades web (XSS, auth, exposição de dados).
-    - ISO/IEC 27001: Princípios de confidencialidade, integridade e disponibilidade (políticas, controle de acesso, trilhas de auditoria).
-    - LGPD (Lei nº 13.709/2018): Princípio da minimização, tratamento apenas de dados técnicos necessários, anonimização quando aplicável e política de privacidade interna.
+    - **OWASP**: Diretrizes para prevenção de vulnerabilidades web (XSS, auth, exposição de dados).
+    - **ISO/IEC 27001**: Princípios de confidencialidade, integridade e disponibilidade (políticas, controle de acesso, trilhas de auditoria).
+    - **LGPD (Lei nº 13.709/2018)**: Princípio da minimização, tratamento apenas de dados técnicos necessários, anonimização quando aplicável e política de privacidade interna.
     
 - **Responsabilidade Ética**:
-    - Privacidade por padrão: Processar apenas o necessário para diagnóstico, mascarando ou suprimindo PIIs acidentais em logs.
-    - Transparência: Seguir a mesma configuração de exibição de dados que a WEG disponibiliza, sem alterações ou variações, puxando diretamente do arquivo postgresql.conf.
-    - Uso responsável de dados e automações: Auditoria de regras que destacam “gargalos” para evitar decisões errôneas e sempre com supervisão humana presente.
-    - Futuras extensões com IA: Caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
+    - **Privacidade por padrão**: Processar apenas o necessário para diagnóstico, mascarando ou suprimindo PIIs acidentais em logs.
+    - **Transparência**: Seguir a mesma configuração de exibição de dados que a WEG disponibiliza, sem alterações ou variações, puxando diretamente do arquivo postgresql.conf.
+    - **Uso responsável de dados e automações**: Auditoria de regras que destacam “gargalos” para evitar decisões errôneas e sempre com supervisão humana presente.
+    - **Futuras extensões com IA**: Caso sejam adicionados modelos para detecção de anomalias, seguiremos os princípios da UNESCO – *Ética em IA e OECD AI Principles*.
 
 ### 3.5. Conformidade e Normas Aplicáveis
 O desenvolvimento e a operação do PGReports seguem rigorosamente as normas e legislações aplicáveis ao contexto de sistemas corporativos, com foco em segurança da informação, privacidade de dados e boas práticas de desenvolvimento de software.
-- LGPD – Lei Geral de Proteção de Dados (Lei nº 13.709/2018):
-    - O PGReports não coleta dados pessoais de usuários externos.
-    - Todos os dados processados são logs técnicos provenientes de servidores PostgreSQL corporativos, sem identificação de pessoas físicas.
-    - Caso haja necessidade futura de integração com dados sensíveis, o sistema seguirá os princípios da minimização, anonimização e finalidade legítima.
+- **LGPD – Lei Geral de Proteção de Dados (Lei nº 13.709/2018)**:
+    - O PGReports não coleta dados pessoais de usuários externos;
+    - Todos os dados processados são logs técnicos provenientes de servidores PostgreSQL corporativos, sem identificação de pessoas físicas;
+    - Caso haja necessidade futura de integração com dados sensíveis, o sistema seguirá os princípios da minimização, anonimização e finalidade legítima;
     - O projeto mantém aderência à política interna de privacidade da WEG e à gestão de dados corporativos.
       
-- ISO/IEC 27001 – Segurança da Informação:
-    - A arquitetura segue os pilares de confidencialidade, integridade e disponibilidade das informações.
-    - São aplicados controles de acesso restrito, auditoria de uso e segregação de funções.
-    - Logs e relatórios são armazenados em diretórios protegidos e com tempo de retenção definido (90 dias).
+- **ISO/IEC 27001 – Segurança da Informação**:
+    - A arquitetura segue os pilares de confidencialidade, integridade e disponibilidade das informações;
+    - São aplicados controles de acesso restrito, auditoria de uso e segregação de funções;
+    - Logs e relatórios são armazenados em diretórios protegidos e com tempo de retenção definido (90 dias);
     - Backups e procedimentos de recuperação de falhas seguem as diretrizes internas de segurança e continuidade de negócios.
 
-- OWASP - Segurança de Aplicações Web:
+- **OWASP - Segurança de Aplicações Web**:
     - O sistema é projetado com base nas boas práticas de segurança definidas pela OWASP Foundation, mitigando riscos como:
-        - Injeção de código (SQL/Command Injection).
-        - Quebra de autenticação e gerenciamento de sessão.
-        - Exposição de dados sensíveis.
-        - Falhas de configuração de segurança.
+        - Injeção de código (SQL/Command Injection);
+        - Quebra de autenticação e gerenciamento de sessão;
+        - Exposição de dados sensíveis;
+        - Falhas de configuração de segurança;
     - Implementações incluem sanitização de entradas, escape em templates, controle de sessão seguro e criptografia de comunicações (HTTPS/TLS).
 
-- Política Interna de Segurança WEG:
-    - O PGReports opera exclusivamente dentro da rede corporativa da WEG.
-    - O acesso é controlado via autenticação corporativa (LDAP/AD).
+- **Política Interna de Segurança WEG**:
+    - O PGReports opera exclusivamente dentro da rede corporativa da WEG;
+    - O acesso é controlado via autenticação corporativa (LDAP/AD);
     - Todas as comunicações e permissões são auditáveis e alinhadas com as diretrizes de conformidade interna da empresa.
    
 ## 4. Evolução do Projeto e Próximos Passos
