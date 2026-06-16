@@ -54,14 +54,14 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 ### 3.1. Requisitos de Software
 - **Requisitos Funcionais (RF)**:
-  1. RF-001 — Geração de relatórios D-1:
+  - RF-001 — Geração de relatórios D-1:
       - O sistema deve gerar e disponibilizar os relatórios no modelo D-1, permitindo que os dados de um determinado dia sejam consultados a partir do dia seguinte.
-  2. RF-002 — Processamento incremental:
+  - RF-002 — Processamento incremental:
       - O sistema deve processar os logs brutos gerados pelas instâncias PostgreSQL e produzir relatórios incrementais, evitando o reprocessamento desnecessário de dados já analisados.
-  3. RF-003 — Consulta por calendário:
-      - O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo.
+  - RF-003 — Consulta por calendário:
+      - O usuário deve poder acessar relatórios diários e semanais por meio de um calendário interativo;
       - O calendário deve apresentar somente datas e períodos que possuam relatórios disponíveis.
-  4. RF-004 — Classificação de eventos:
+  - RF-004 — Classificação de eventos:
       - O sistema deve organizar e exibir os dados de acordo com categorias de eventos, incluindo:
         - erros;
         - checkpoints;
@@ -70,7 +70,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - sessões;
         - tipos de queries;
         - demais eventos identificados nos logs.
-  5. RF-005 — Dashboards e métricas:
+  - RF-005 — Dashboards e métricas:
       - O sistema deve exibir métricas e informações de desempenho em dashboards visuais.Entre as informações apresentadas devem estar:
         - tempo de execução das queries;
         - quantidade de execuções;
@@ -78,67 +78,67 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - queries que mais consumiram tempo;
         - sessões identificadas;
         - eventos e períodos de maior atividade.
-  6. RF-006 — Exportação de gráficos:
+  - RF-006 — Exportação de gráficos:
       - O usuário deve poder exportar ou baixar os gráficos disponibilizados nos relatórios em formato PNG.
-  7. RF-007 — Controle de acesso:
-      - O sistema deve restringir o acesso a usuários internos autenticados.
-A autenticação deve utilizar o serviço corporativo definido para o projeto, como LDAP, Active Directory ou Keycloak.
+  - RF-007 — Controle de acesso:
+      - O sistema deve restringir o acesso a usuários internos autenticados;
+      - A autenticação deve utilizar o serviço corporativo  definido para o projeto, como LDAP, Active Directory ou Keycloak;
       - As funcionalidades administrativas devem ser disponibilizadas somente para usuários autorizados.
-  8. RF-008 — Retenção de relatórios:
-      - O sistema deve permitir a configuração do período de retenção dos relatórios.
+  - RF-008 — Retenção de relatórios:
+      - O sistema deve permitir a configuração do período de retenção dos relatórios;
       - O período padrão deve ser de 90 dias, após o qual os relatórios e índices relacionados poderão ser removidos automaticamente.
 
 - **Requisitos Não-Funcionais (RNF)**:
-  1. RNF-001 — Desempenho:
-      - O processamento dos logs deve ocorrer de forma incremental, reduzindo o tempo de execução e o consumo de recursos.
+  - RNF-001 — Desempenho:
+      - O processamento dos logs deve ocorrer de forma incremental, reduzindo o tempo de execução e o consumo de recursos;
       - A aplicação deve evitar o reprocessamento completo dos arquivos sempre que houver apenas novos registros.
-  2. RNF-002 — Usabilidade:
-      - A interface deve ser intuitiva, responsiva e visualmente clara.
+  - RNF-002 — Usabilidade:
+      - A interface deve ser intuitiva, responsiva e visualmente clara;
       - A navegação deve permitir que o usuário localize ambientes, servidores, períodos e relatórios sem precisar acessar diretamente os arquivos de log.
-  3. RNF-003 — Segurança:
-      - O acesso deve ser restrito à rede corporativa da WEG ou aos meios de conexão autorizados pela organização.
-      - O sistema deve exigir autenticação para acesso aos relatórios.
-      - Informações sensíveis presentes nos logs devem ser mascaradas sempre que aplicável.
+  - RNF-003 — Segurança:
+      - O acesso deve ser restrito à rede corporativa da WEG ou aos meios de conexão autorizados pela organização;
+      - O sistema deve exigir autenticação para acesso aos relatórios;
+      - Informações sensíveis presentes nos logs devem ser mascaradas sempre que aplicável;
       - Credenciais e segredos não devem ser armazenados diretamente no código-fonte.
-  4. RNF-004 — Escalabilidade:
-      - O sistema deve permitir a inclusão de novas instâncias PostgreSQL sem exigir alterações significativas na arquitetura.
+  - RNF-004 — Escalabilidade:
+      - O sistema deve permitir a inclusão de novas instâncias PostgreSQL sem exigir alterações significativas na arquitetura;
       - O processamento de uma instância não deve impedir a geração de relatórios das demais.
-  5. RNF-005 — Disponibilidade:
-      - As rotinas de coleta, processamento e transferência devem ser executadas automaticamente em segundo plano.
-      - Falhas de processamento devem ser registradas para permitir diagnóstico e reexecução.
+  - RNF-005 — Disponibilidade:
+      - As rotinas de coleta, processamento e transferência devem ser executadas automaticamente em segundo plano;
+      - Falhas de processamento devem ser registradas para permitir diagnóstico e reexecução;
       - As rotinas podem ser controladas por ferramentas de agendamento e orquestração, como Airflow, cron ou systemd, conforme a arquitetura adotada.
-  6. RNF-006 — Compatibilidade
-      - O sistema deve ser compatível com instâncias PostgreSQL 14 ou superiores, considerando as versões homologadas e testadas durante o projeto.
+  - RNF-006 — Compatibilidade
+      - O sistema deve ser compatível com instâncias PostgreSQL 14 ou superiores, considerando as versões homologadas e testadas durante o projeto;
       - A compatibilidade deve considerar também o formato e as configurações dos logs utilizados pelo pgBadger.
-  7. RNF-007 — Manutenibilidade:
-      - Os scripts, configurações e componentes da aplicação devem ser versionados.
-      - O código deve ser organizado de forma modular, facilitando correções e inclusão de novas funcionalidades.
+  - RNF-007 — Manutenibilidade:
+      - Os scripts, configurações e componentes da aplicação devem ser versionados;
+      - O código deve ser organizado de forma modular, facilitando correções e inclusão de novas funcionalidades;
       - As configurações específicas de cada ambiente devem ser mantidas separadas da lógica principal da aplicação.
-  8. RNF-008 — Rastreabilidade:
-      - As rotinas automatizadas devem registrar informações sobre início, término, duração, sucesso e falha das execuções.
+  - RNF-008 — Rastreabilidade:
+      - As rotinas automatizadas devem registrar informações sobre início, término, duração, sucesso e falha das execuções;
       - Os registros devem permitir a identificação da instância, do período e do relatório processado.
 
 - **Aderência aos Requisitos da Linha de Projeto**: O PGReports é uma aplicação Web que atende aos critérios obrigatórios desta linha de projeto:
-  - Indexes dos reports desenvolvidos em HTML5, CSS3 e JavaScript (frontend).
-  - Interface da aplicação desenvolvida em Typescript.
-  - Utilização de scripts Python durante o seu ciclo.
+  - Indexes dos reports desenvolvidos em HTML5, CSS3 e JavaScript (frontend);
+  - Interface da aplicação desenvolvida em Typescript;
+  - Utilização de scripts Python durante o seu ciclo;
   - Geração de relatórios e visualizações dinâmicas (componentes web responsivos).
 
 ### 3.2. Considerações de Design
 - **Visão Inicial da Arquitetura**: A arquitetura do PGReports é dividida em quatro camadas principais:
-  1. Coleta: As instâncias PostgreSQL geram os logs técnicos, atuando com os scripts e rotinas automatizadas que transferem os arquivos para o processamento. 
-  2. Processamento: Parser dos logs (pgBadger) e estruturação dos dados em formato legível.
-  3. Armazenamento: Organização dos relatórios em diretórios estruturados por data (ano/mês/semana/dia).
-  4. Apresentação: Exibição dos resultados em uma interface web responsiva com gráficos dinâmicos e interativos.
+  - **Coleta**: As instâncias PostgreSQL geram os logs técnicos, atuando com os scripts e rotinas automatizadas que transferem os arquivos para o processamento. 
+  - **Processamento**: Parser dos logs (pgBadger) e estruturação dos dados em formato legível.
+  - **Armazenamento**: Organização dos relatórios em diretórios estruturados por data (ano/mês/semana/dia).
+  - **Apresentação**: Exibição dos resultados em uma interface web responsiva com gráficos dinâmicos e interativos.
     
 - **Padrões de Arquitetura**: O projeto adota uma Arquitetura em Camadas combinada com o padrão MVC (Model–View–Controller):
-  - Model: Responsável pela leitura e organização dos dados dos logs.
-  - View: Camada de interface e dashboards web.
+  - **Model**: Responsável pela leitura e organização dos dados dos logs.
+  - **View**: Camada de interface e dashboards web.
   - Controller: Lógica intermediária de negócio.
 
 
 - **Modelos C4**:
-  1. Nível 1 — Diagrama de Contexto do Sistema:
+  - Nível 1 — Diagrama de Contexto do Sistema:
     - Objetivo:
       - Mostrar o PGReports de forma geral, sem entrar nos detalhes internos da aplicação, focando nos usuários e sistemas externos que se comunicam com a aplicação.
 
@@ -165,7 +165,7 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 
   ![Diagrama de Nível 1 - Modelo C4](images/c4model/ModelC4Nivel1.png)
 
-  2. Nível 2 — Diagrama de Contêineres:
+  - Nível 2 — Diagrama de Contêineres:
     - Objetivo:
       - Mostrar as principais partes que formam o PGReports e a responsabilidade de cada uma.
 
@@ -197,7 +197,7 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 
   ![Diagrama de Nível 2 - Modelo C4](images/c4model/ModelC4Nivel2.png)
 
-  3. Nível 3 — Diagrama de Componentes:
+  - Nível 3 — Diagrama de Componentes:
     - Objetivo:
       - Mostrar os principais módulos internos do PGReports, principalmente dentro do Serviço de Aplicação.
 
@@ -225,7 +225,7 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
 
   ![Diagrama de Nível 3 - Modelo C4](images/c4model/ModelC4Nivel3.png)
 
-  4. Nível 4 — Diagrama de Código:
+  - Nível 4 — Diagrama de Código:
     - Objetivo:
       - Mostrar os detalhes de implementação de um componente específico do PGReports.
 
@@ -261,11 +261,11 @@ A autenticação deve utilizar o serviço corporativo definido para o projeto, c
   ![Diagrama de Nível 4 - Modelo C4](images/c4model/ModelC4Nivel4.png)
 
 - **Mockups das Telas Principais**: As telas principais incluem:
-  - Calendário de relatórios: Seleção de data e navegação entre períodos.
+  - **Calendário de relatórios**: Seleção de data e navegação entre períodos.
 ![Calendário de Relatórios](./images/mock/reportscalendar.png)
-  - Dashboard inicial (Overview): Visão geral das instâncias e métricas de desempenho.
+  - **Dashboard inicial (Overview)**: Visão geral das instâncias e métricas de desempenho.
 ![Dashboard Overview](./images/mock/reportsoverview.png)
-  - Aba “Top": Na área de queries, exibe as consultas mais custosas.
+  - **Aba “Top"**: Na área de queries, exibe as consultas mais custosas.
 ![Dashboard Top Queries](./images/mock/reportslongquery.png)
 
 - **Decisões e Alternativas Consideradas**:
