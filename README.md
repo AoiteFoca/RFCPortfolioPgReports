@@ -214,6 +214,9 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - Armazena os relatórios, índices e demais arquivos gerados.
 
   ![Diagrama de Nível 1 - Modelo C4](images/c4model/ModelC4Nivel1.png)
+  <p align="center">
+  <em>Imagem 1 – Diagrama de Contexto do Sistema — Modelo C4 Nível 1.</em>
+</p>
 
   - **Nível 2 — Diagrama de Contêineres:**
     - Objetivo:
@@ -246,6 +249,9 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - Valida os usuários que acessam a aplicação.
 
   ![Diagrama de Nível 2 - Modelo C4](images/c4model/ModelC4Nivel2.png)
+  <p align="center">
+  <em>Imagem 2 – Diagrama de Contêiners — Modelo C4 Nível 2.</em>
+</p>
 
   - **Nível 3 — Diagrama de Componentes:**
     - Objetivo:
@@ -274,6 +280,9 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - Registra acessos, falhas de leitura, erros de processamento e ações importantes do sistema.
 
   ![Diagrama de Nível 3 - Modelo C4](images/c4model/ModelC4Nivel3.png)
+<p align="center">
+  <em>Imagem 3 – Diagrama de Componentes — Modelo C4 Nível 3.</em>
+</p>
 
   - **Nível 4 — Diagrama de Código:**
     - Objetivo:
@@ -309,14 +318,28 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
         - Registra acessos, erros e downloads.
 
   ![Diagrama de Nível 4 - Modelo C4](images/c4model/ModelC4Nivel4.png)
+<p align="center">
+  <em>Imagem 4 – Diagrama de Código — Modelo C4 Nível 4.</em>
+</p>
 
 - **Mockups das Telas Principais**: As telas principais incluem:
   - **Calendário de relatórios**: Seleção de data e navegação entre períodos.
 ![Calendário de Relatórios](./images/mock/reportscalendar.png)
+    <p align="center">
+      <em>Imagem 5 – Calendário de reports.</em>
+    </p>
+
   - **Dashboard inicial (Overview)**: Visão geral das instâncias e métricas de desempenho.
 ![Dashboard Overview](./images/mock/reportsoverview.png)
+    <p align="center">
+      <em>Imagem 6 – Módulo de Overview.</em>
+    </p>
+
   - **Aba “Top"**: Na área de queries, exibe as consultas mais custosas.
 ![Dashboard Top Queries](./images/mock/reportslongquery.png)
+    <p align="center">
+      <em>Imagem 7 – Módulo de Tops.</em>
+    </p>
 
 - **Decisões e Alternativas Consideradas**:
   - Inicialmente, foi avaliada a utilização exclusiva de ferramentas já disponíveis na WEG, como Grafana e Splunk. Essas soluções continuam sendo importantes para monitoramento, observabilidade e centralização de informações. Entretanto, para o caso de uso do projeto, foi identificada a necessidade de uma visualização mais específica dos logs PostgreSQL, com relatórios organizados por ambiente, servidor e período.
