@@ -70,7 +70,7 @@ O PGReports é uma aplicação web desenvolvida para auxiliar na análise de log
   
 * **Propósito e Uso Prático**: Quando ferramentas básicas de visualização e análise de dados, como Grafana, se tornam superficiais para a resolução de um problema, analistas devem atuar para identificar o gargalo ou a falha que resultou no problema encontrado. O PGReports surge, nesses casos, como uma ótima opção de análise, uma vez que trabalha diretamente com o _raw log_.
 
-* **Público-Alvo**: O público alvo dessa ferramente são DBAs, analistas BASIS e os próprios responsáveis por bancos de dados dentro dos ambientes gerenciados pela T.I da WEG.
+* **Público-Alvo**: O público alvo dessa ferramenta são DBAs, analistas BASIS e os próprios responsáveis por bancos de dados dentro dos ambientes gerenciados pela T.I da WEG.
 
 * **Problemas a Resolver**: Desperdício de tempo para encontrar situações atípicas, queries que estão sendo mais executadas, mais demoradas e mais custosas, no geral, para o servidor, assim como a identificação da aplicação e client responsável pela execução dessas queries. De maneira abrangente, o PGReports facilita na resolução destes problemas agrupando essas informações de forma prática com uma interface amigável ao usuário final.
 
