@@ -138,7 +138,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
 
 - **Modelos C4**:
-  - Nível 1 — Diagrama de Contexto do Sistema:
+  - **Nível 1 — Diagrama de Contexto do Sistema:**
     - Objetivo:
       - Mostrar o PGReports de forma geral, sem entrar nos detalhes internos da aplicação, focando nos usuários e sistemas externos que se comunicam com a aplicação.
 
@@ -165,7 +165,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
   ![Diagrama de Nível 1 - Modelo C4](images/c4model/ModelC4Nivel1.png)
 
-  - Nível 2 — Diagrama de Contêineres:
+  - **Nível 2 — Diagrama de Contêineres:**
     - Objetivo:
       - Mostrar as principais partes que formam o PGReports e a responsabilidade de cada uma.
 
@@ -197,7 +197,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
   ![Diagrama de Nível 2 - Modelo C4](images/c4model/ModelC4Nivel2.png)
 
-  - Nível 3 — Diagrama de Componentes:
+  - **Nível 3 — Diagrama de Componentes:**
     - Objetivo:
       - Mostrar os principais módulos internos do PGReports, principalmente dentro do Serviço de Aplicação.
 
@@ -225,7 +225,7 @@ Considerando e assegurando a conformidade com boas práticas de desenvolvimento 
 
   ![Diagrama de Nível 3 - Modelo C4](images/c4model/ModelC4Nivel3.png)
 
-  - Nível 4 — Diagrama de Código:
+  - **Nível 4 — Diagrama de Código:**
     - Objetivo:
       - Mostrar os detalhes de implementação de um componente específico do PGReports.
 
